@@ -10,7 +10,7 @@ class User {
 
   }
   getFirstName() {
-    return this.name.split(' ', 1).join();
+    return this.name.split(' ')[0];
   }
   getFriendsNames(userStorage) {
     return this.friends.map((friendId) => (userStorage.getDataFromID(friendId).name));
