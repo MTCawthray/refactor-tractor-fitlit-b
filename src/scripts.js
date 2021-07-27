@@ -14,14 +14,15 @@ import Activity from './Activity';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
 import UserRepo from './User-repo';
+import domUpdates from './domUpdates';
 
 var sidebarName = document.getElementById('sidebarName');
 var stepGoalCard = document.getElementById('stepGoalCard');
-var headerText = document.getElementById('headerText');
+// var headerText = document.getElementById('headerText');
 var userAddress = document.getElementById('userAddress');
 var userEmail = document.getElementById('userEmail');
 var userStridelength = document.getElementById('userStridelength');
-var friendList = document.getElementById('friendList');
+// var friendList = document.getElementById('friendList');
 var hydrationToday = document.getElementById('hydrationToday');
 var hydrationAverage = document.getElementById('hydrationAverage');
 var hydrationThisWeek = document.getElementById('hydrationThisWeek');
@@ -67,11 +68,12 @@ function startApp() {
   addActivityInfo(userNowId, activityRepo, today, userRepo, randomHistory, userNow, winnerNow);
   addFriendGameInfo(userNowId, activityRepo, userRepo, today, randomHistory, userNow);
 }
-
+//below we pass an argument of empty array to populate with our user objects
 function makeUsers(array) {
-  userData.forEach(function(dataItem) {
+  userData.forEach(function(dataItem) { //userData will have to change to our API input
     let user = new User(dataItem);
-    array.push(user);
+    array.push(user);//now our userList array holds the user instances
+    //could we move userList array into this function and just return the userList?
   })
 }
 
@@ -86,17 +88,24 @@ function getUserById(id, listRepo) {
 
 function addInfoToSidebar(user, userStorage) {
   sidebarName.innerText = user.name;
-  headerText.innerText = `${user.getFirstName()}'s Activity Tracker`;
+  displayFirstName(user);
   stepGoalCard.innerText = `Your daily step goal is ${user.dailyStepGoal}.`
   avStepGoalCard.innerText = `The average daily step goal is ${userStorage.calculateAverageStepGoal()}`;
   userAddress.innerText = user.address;
   userEmail.innerText = user.email;
   userStridelength.innerText = `Your stridelength is ${user.strideLength} meters.`;
-  friendList.insertAdjacentHTML('afterBegin', makeFriendHTML(user, userStorage))
+  displayFriendHTML(user, userStorage)
+  // friendList.insertAdjacentHTML('afterBegin', displayFriendHTML(user, userStorage))
 }
 
-function makeFriendHTML(user, userStorage) {
-  return user.getFriendsNames(userStorage).map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`).join('');
+function displayFirstName(user) {
+domUpdates.renderFirstName(user);
+}
+
+function displayFriendHTML(user, userStorage) {
+  let nameList = user.getFriendsNames(userStorage);
+  console.log(nameList);
+  domUpdates.renderFriendHTML(nameList);
 }
 
 function makeWinnerID(activityInfo, user, dateString, userStorage) {
