@@ -18,11 +18,10 @@ import domUpdates from './domUpdates';
 
 var sidebarName = document.getElementById('sidebarName');
 var stepGoalCard = document.getElementById('stepGoalCard');
-// var headerText = document.getElementById('headerText');
 var userAddress = document.getElementById('userAddress');
 var userEmail = document.getElementById('userEmail');
 var userStridelength = document.getElementById('userStridelength');
-// var friendList = document.getElementById('friendList');
+
 var hydrationToday = document.getElementById('hydrationToday');
 var hydrationAverage = document.getElementById('hydrationAverage');
 var hydrationThisWeek = document.getElementById('hydrationThisWeek');
@@ -94,8 +93,7 @@ function addInfoToSidebar(user, userStorage) {
   userAddress.innerText = user.address;
   userEmail.innerText = user.email;
   userStridelength.innerText = `Your stridelength is ${user.strideLength} meters.`;
-  displayFriendHTML(user, userStorage)
-  // friendList.insertAdjacentHTML('afterBegin', displayFriendHTML(user, userStorage))
+  displayFriendHTML(user, userStorage);
 }
 
 function displayFirstName(user) {

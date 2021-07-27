@@ -2,7 +2,7 @@ class UserRepo {
   constructor(users) {
     this.users = users;
   }
-  getDataFromID(id) {
+  getDataFromID(id) { 
     return this.users.find((user) => id === user.id);
   }
   getDataFromUserID(id, dataSet) {
