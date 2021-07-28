@@ -144,4 +144,22 @@ describe('User', function() {
     expect(flightRecord).to.equal(36);
   });
 
+  it('should be able to retrieve the daily steps for a user over the course of a week', function() {
+    const stepsOverWeek = user1.getOverWeekAmount('2019/06/15', sampleActivityData, 'numSteps');
+
+    expect(stepsOverWeek).to.eql([3577, 6637, 14329, 4419, 8429, 14478, 6760]);
+  });
+
+  it('should be able to retrieve the daily min active for a user over the course of a week', function() {
+    const minOverWeek = user1.getOverWeekAmount('2019/06/15', sampleActivityData, 'minutesActive');
+
+    expect(minOverWeek).to.eql([140, 175, 168, 165, 275, 140, 135]);
+  });
+
+  it('should be able to retrieve the daily flights of stairs for a user over the course of a week', function() {
+    const flightsOverWeek = user1.getOverWeekAmount('2019/06/15', sampleActivityData, 'flightsOfStairs');
+
+    expect(flightsOverWeek).to.eql([16, 36, 18, 33, 2, 12, 6]);
+  });
+
 });
