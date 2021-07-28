@@ -126,4 +126,11 @@ describe('User', function() {
     expect(avgMinutes).to.equal(188);
   });
 
+ it('should determine whether a user reached their step goal on a specific date', function() {
+    const userStepGoal = user1.getStepGoalResult(sampleActivityData, '2019/06/16');
+
+    expect(userStepGoal).to.equal(false);
+  });
+
+
 });
