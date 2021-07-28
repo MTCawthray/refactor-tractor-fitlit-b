@@ -3,6 +3,8 @@ class UserRepo {
     this.users = users;
   }
 
+// ACCESS USER
+
   getDataFromID(id) { 
     return this.users.find((user) => id === user.id);
   }
@@ -11,9 +13,10 @@ class UserRepo {
     return dataSet.filter((userData) => id === userData.userID);
   }
 
+  /////////////////////////////////////////////
+  
+  // NEW HELPER FUNCTIONS
 
-
-// helper
   calcAvgAllUsers(key) {
     var result = this.users.reduce((acc, dataSet) => {
       return acc += dataSet[key];
@@ -21,20 +24,15 @@ class UserRepo {
     return result / this.users.length;
   }
 
-// method using helper
+  // NEW USES OF HELPER FUNCTIONS
+
   calculateAverageStepGoal() {
     this.calcAvgAllUsers('dailyStepGoal');
   }
 
+  /////////////////////////////////////////////
 
-
-
-
-  makeSortedUserArray(id, dataSet) {
-    let selectedID = this.getDataFromUserID(id, dataSet)
-    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
-    return sortedByDate;
-  }
+  // OG HELPER FUNCTIONS - ACCESS DATE(S)
 
   getToday(id, dataSet) {
     return this.makeSortedUserArray(id, dataSet)[0].date;
@@ -49,11 +47,17 @@ class UserRepo {
     return this.makeSortedUserArray(id, dataSet).slice(dateIndex, dateIndex + 7);
   }
 
+  // OG HELPER FUNCTIONS ONLY USED ONCE
+
+  // only used once: `Activity.getFriendsAverageStepsForWeek()`
+
   chooseWeekDataForAllUsers(dataSet, date) {
     return dataSet.filter(function(dataItem) {
       return (new Date(date)).setDate((new Date(date)).getDate() - 7) <= new Date(dataItem.date) && new Date(dataItem.date) <= new Date(date)
     })
   }
+
+  // only used once: activity.getAllUserAverageForDay()
 
   chooseDayDataForAllUsers(dataSet, date) {
     return dataSet.filter(function(dataItem) {
@@ -61,16 +65,7 @@ class UserRepo {
     });
   }
 
-  isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod) {
-    return listFromMethod.reduce(function(acc, dataItem) {
-      if (!acc[dataItem.userID]) {
-        acc[dataItem.userID] = [dataItem[relevantData]]
-      } else {
-        acc[dataItem.userID].push(dataItem[relevantData])
-      }
-      return acc;
-    }, {});
-  }
+    // only used once: user-repo.combineRankedUserIDsAndAveragedData() helper function below
 
   rankUserIDsbyRelevantDataValue(dataSet, date, relevantData, listFromMethod) {
     let sortedObjectKeys = this.isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod)
@@ -85,6 +80,8 @@ class UserRepo {
     });
   }
 
+  // only used once: activity.getFriendsAverageStepsForWeek()
+
   combineRankedUserIDsAndAveragedData(dataSet, date, relevantData, listFromMethod) {
     let sortedObjectKeys = this.isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod)
     let rankedUsersAndAverages = this.rankUserIDsbyRelevantDataValue(dataSet, date, relevantData, listFromMethod)
@@ -98,6 +95,29 @@ class UserRepo {
       };
       return rankedUser;
     });
+  }
+
+  // OG HELPER FUNCTIONS: OTHERS THAT WE SHOULD DISCUSS?
+
+  // used in the date access helper functions above & 1 in activity.getStreak()
+
+  makeSortedUserArray(id, dataSet) {
+    let selectedID = this.getDataFromUserID(id, dataSet)
+    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return sortedByDate;
+  }
+
+ // only used twice (in 2 other helper functions): user-repo.combineRankedUserIDsAndAveragedData() & user-repo.rankUserIDsbyRelevantDataValue()
+
+  isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod) {
+    return listFromMethod.reduce(function(acc, dataItem) {
+      if (!acc[dataItem.userID]) {
+        acc[dataItem.userID] = [dataItem[relevantData]]
+      } else {
+        acc[dataItem.userID].push(dataItem[relevantData])
+      }
+      return acc;
+    }, {});
   }
 
 }
