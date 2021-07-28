@@ -102,7 +102,6 @@ domUpdates.renderFirstName(user);
 
 function displayFriendHTML(user, userStorage) {
   let nameList = user.getFriendsNames(userStorage);
-  console.log(nameList);
   domUpdates.renderFriendHTML(nameList);
 }
 
