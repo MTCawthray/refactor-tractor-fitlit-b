@@ -94,6 +94,15 @@ class User {
     return stepGoalExceededDays.map(entry => entry.date);
   }
 
+    getFlightsClimbedRecord(activityData) {
+    const usersData = activityData.filter(entry => entry.userID === this.id)
+    const sortedEntries = usersData.sort((a, b) => {
+      return b.flightsOfStairs - a.flightsOfStairs;
+    })
+    const [maxFlights] = sortedEntries;
+
+    return maxFlights.flightsOfStairs;
+  }
 }
 
 export default User;
