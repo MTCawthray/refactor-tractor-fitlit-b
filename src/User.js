@@ -66,7 +66,16 @@ class User {
     const avgAmount = totalSum / dailySum.length;
 
     return parseFloat(avgAmount.toFixed(1));
-    //do we want this to have a decimal amount, if so add 1 into toFixed
+  }
+
+  //activity specific methods
+  calcDailyMilesWalked(activityData, date) {
+    const usersData = activityData.filter(entry => entry.userID === this.id)
+    const dateStats = usersData.find(entry => entry.date === date);
+    const feetWalked = dateStats.numSteps * this.strideLength;
+    const milesWalked = feetWalked / 5280;
+
+    return parseFloat(milesWalked.toFixed(1));
   }
 
 }

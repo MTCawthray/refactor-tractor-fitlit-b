@@ -101,5 +101,11 @@ describe('User', function() {
     expect(sleepQualityWeek).to.eql([2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
   });
 
+  //ACTIVITY
+  it('should be able to calculate the miles walked by a user on a specific date', function() {
+    const userMiles = user1.calcDailyMilesWalked(sampleActivityData, '2019/06/16');
+
+    expect(userMiles).to.equal(5.4);
+  });
 
 });
