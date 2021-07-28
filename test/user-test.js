@@ -89,17 +89,17 @@ describe('User', function() {
     expect(avgSleepQuality).to.equal(2.8);
   });
 
-  // it('should be able to retrieve the hours slept data for a user throughout a given week', function() {
-  //   const hoursSleptWeek = user1.getSleepDataByWeek(sleepTestData, '2019/06/15', 'hoursSlept');
+  it('should be able to retrieve the hours slept data for a user throughout a given week', function() {
+    const hoursSleptWeek = user1.getOverWeekAmount('2019/06/15', sampleSleepData, 'hoursSlept');
 
-  //   expect(hoursSleptWeek).to.deep.equal([6, 6, 10, 8, 5, 10, 8]);
-  // });
+    expect(hoursSleptWeek).to.eql([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
+  });
 
-  // it('should be able to retrieve the sleep quality data for a user throughout a given week', function() {
-  //   const sleepQualityWeek = user1.getSleepDataByWeek(sleepTestData, '2019/06/15', 'sleepQuality');
+  it('should be able to retrieve the sleep quality data for a user throughout a given week', function() {
+    const sleepQualityWeek = user1.getOverWeekAmount('2019/06/15', sampleSleepData, 'sleepQuality');
 
-  //   expect(sleepQualityWeek).to.deep.equal([3, 2, 4, 4, 2, 4, 5]);
-  // });
+    expect(sleepQualityWeek).to.eql([2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
+  });
 
 
 });
