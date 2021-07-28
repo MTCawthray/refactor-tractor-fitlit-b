@@ -120,4 +120,10 @@ describe('User', function() {
     expect(minActive).to.equal(140);
   });
 
+  it('should calculate the average minutes active for a user during a given week', function() {
+    const avgMinutes = user1.calcAvgOverWeek(sampleActivityData, '2019/06/15', 'minutesActive');
+
+    expect(avgMinutes).to.equal(188);
+  });
+
 });
