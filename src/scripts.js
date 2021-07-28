@@ -4,7 +4,7 @@ import './css/styles.scss';
 import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 
-import userData from './data/users';
+import { getData } from './apiCalls';
 import hydrationData from './data/hydration';
 import sleepData from './data/sleep';
 import activityData from './data/activity';
@@ -48,7 +48,7 @@ var bestUserSteps = document.getElementById('bestUserSteps');
 var streakList = document.getElementById('streakList');
 var streakListMinutes = document.getElementById('streakListMinutes')
 
-function startApp() {
+const startApp = () => {
   let userList = [];
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
@@ -188,4 +188,14 @@ function makeStepStreakHTML(id, activityInfo, userStorage, method) {
   return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
 }
 
-startApp();
+let userData;
+// let hydrationData;  
+
+getData('users').then(data => {
+  userData = data.userData;
+}).then(startApp);
+
+// getData('hydration').then(data => {
+//   hydrationData = data.hydrationData;
+//   console.log(hydrationData);
+// }).then(startApp);
