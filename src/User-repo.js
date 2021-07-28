@@ -28,7 +28,7 @@ class UserRepo {
 
 
 
-  
+
 
   makeSortedUserArray(id, dataSet) {
     let selectedID = this.getDataFromUserID(id, dataSet)
@@ -62,25 +62,25 @@ class UserRepo {
   }
 
   isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod) {
-    return listFromMethod.reduce(function(objectSoFar, dataItem) {
-      if (!objectSoFar[dataItem.userID]) {
-        objectSoFar[dataItem.userID] = [dataItem[relevantData]]
+    return listFromMethod.reduce(function(acc, dataItem) {
+      if (!acc[dataItem.userID]) {
+        acc[dataItem.userID] = [dataItem[relevantData]]
       } else {
-        objectSoFar[dataItem.userID].push(dataItem[relevantData])
+        acc[dataItem.userID].push(dataItem[relevantData])
       }
-      return objectSoFar;
+      return acc;
     }, {});
   }
 
   rankUserIDsbyRelevantDataValue(dataSet, date, relevantData, listFromMethod) {
     let sortedObjectKeys = this.isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod)
     return Object.keys(sortedObjectKeys).sort(function(b, a) {
-      return (sortedObjectKeys[a].reduce(function(sumSoFar, sleepQualityValue) {
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0) / sortedObjectKeys[a].length) - (sortedObjectKeys[b].reduce(function(sumSoFar, sleepQualityValue) {
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
+      return (sortedObjectKeys[a].reduce(function(acc, sleepQualityValue) {
+        acc += sleepQualityValue
+        return acc;
+      }, 0) / sortedObjectKeys[a].length) - (sortedObjectKeys[b].reduce(function(acc, sleepQualityValue) {
+        acc += sleepQualityValue
+        return acc;
       }, 0) / sortedObjectKeys[b].length)
     });
   }
@@ -91,9 +91,9 @@ class UserRepo {
     return rankedUsersAndAverages.map(function(rankedUser) {
       rankedUser = {
         [rankedUser]: sortedObjectKeys[rankedUser].reduce(
-          function(sumSoFar, sleepQualityValue) {
-            sumSoFar += sleepQualityValue
-            return sumSoFar;
+          function(acc, sleepQualityValue) {
+            acc += sleepQualityValue
+            return acc;
           }, 0) / sortedObjectKeys[rankedUser].length
       };
       return rankedUser;
