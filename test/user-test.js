@@ -132,5 +132,10 @@ describe('User', function() {
     expect(userStepGoal).to.equal(false);
   });
 
+  it('should identify dates when user exceeded step goal', function() {
+    const userStepGoalDays = user1.getDatesExceedingStepGoal(sampleActivityData);
+
+    expect(userStepGoalDays).to.eql(['2019/06/17', '2019/06/20', '2019/06/22', '2019/06/23']);
+  });
 
 });
