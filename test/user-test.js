@@ -108,4 +108,16 @@ describe('User', function() {
     expect(userMiles).to.equal(5.4);
   });
 
+  it('should retrieve the number of steps for a user on a specific date', function() {
+    const numSteps = user1.getDateAmount('2019/06/15', sampleActivityData, 'numSteps');
+
+    expect(numSteps).to.equal(3577);
+  });
+
+  it('should retrieve minutes active for a user on a specific date', function() {
+    const minActive = user1.getDateAmount('2019/06/15', sampleActivityData, 'minutesActive');
+
+    expect(minActive).to.equal(140);
+  });
+
 });
