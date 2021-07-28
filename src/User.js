@@ -12,9 +12,63 @@ class User {
   getFirstName() {
     return this.name.split(' ')[0];
   }
+
   getFriendsNames(userStorage) {
     return this.friends.map((friendId) => (userStorage.getDataFromID(friendId).name));
   }
+
+  getDateAmount(date, data, property) {
+    const entry = data.find(entry => {
+      entry.date === date
+      if ((entry.date === date) && (entry.userID === this.id)) {
+        return entry[property];
+      }
+    })
+
+    return entry[property]
+  }
+
+  calcAvgForDate(data, property) {
+    const daily = data.map(entry => entry[property]);
+    const total = daily.reduce((acc, curr) => {
+      return acc + curr;
+    });
+
+    return Math.round(total / data.length);
+  }
+
+  getOverWeekAmount(startDate, data, property) {
+    const usersData = data.filter(entry => entry.userID === this.id)
+    const index = usersData.findIndex(entry => entry.date === startDate);
+    const weekLog = usersData.slice(index, index + 7);
+
+    return weekLog.map(entry => entry[property]);
+  }
+
+  calcAvgOverWeek(data, startDate, property) {
+    const usersData = data.filter(entry => entry.userID === this.id)
+    const index = usersData.findIndex(entry => entry.date === startDate);
+    const weekLog = usersData.slice(index, index + 8);
+    const weeklyStats = weekLog.map(entry => entry[property]);
+    const total = weeklyStats.reduce((sum, num) => {
+      return sum + num;
+    });
+
+    return Math.round(total / 7);
+  }
+
+    calcAvgAllTime(data, property) {
+    const usersData = data.filter(entry => entry.userID === this.id)
+    const dailySum = usersData.map(entry => entry[property]);
+    const totalSum = dailySum.reduce((sum, num) => {
+      return sum + num;
+    });
+    const avgAmount = totalSum / dailySum.length;
+
+    return parseFloat(avgAmount.toFixed(1));
+    //do we want this to have a decimal amount, if so add 1 into toFixed
+  }
+
 }
 
 export default User;
