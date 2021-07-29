@@ -28,14 +28,14 @@ class User {
     return entry[property]
   }
 
-  calcAvgForDate(data, property) {
-    const daily = data.map(entry => entry[property]);
-    const total = daily.reduce((acc, curr) => {
-      return acc + curr;
-    });
+  // calcAvgForDate(data, property) {
+  //   const daily = data.map(entry => entry[property]);
+  //   const total = daily.reduce((acc, curr) => {
+  //     return acc + curr;
+  //   });
 
-    return Math.round(total / data.length);
-  }
+  //   return Math.round(total / data.length);
+  // }
 
   getOverWeekAmount(startDate, data, property) {
     const usersData = data.filter(entry => entry.userID === this.id)
