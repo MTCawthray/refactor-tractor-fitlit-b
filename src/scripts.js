@@ -4,10 +4,7 @@ import './css/styles.scss';
 import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 
-import userData from './data/users';
-import hydrationData from './data/hydration';
-import sleepData from './data/sleep';
-import activityData from './data/activity';
+import { fetchData } from './apiCalls';
 
 import User from './User';
 import Activity from './Activity';
@@ -48,7 +45,38 @@ var bestUserSteps = document.getElementById('bestUserSteps');
 var streakList = document.getElementById('streakList');
 var streakListMinutes = document.getElementById('streakListMinutes')
 
+window.addEventListener('load', returnData)
+
+let userData, hydrationData, sleepData, activityData;
+
+function getData() {
+  return Promise.all([fetchData('users'), fetchData('hydration'), fetchData('sleep'), fetchData('activity')]);
+}
+
+function returnData() {
+  getData()
+  .then(promiseArray => {
+    userData = promiseArray[0].userData;
+    hydrationData = promiseArray[1].hydrationData;
+    sleepData = promiseArray[2].sleepData;
+    activityData = promiseArray[3].activityData;
+  }).then(startApp);
+}
+
+
+// getData('users').then(data => {
+//   userData = data.userData;
+// }).then(startApp);
+
+// getData('hydration').then(data => {
+//   hydrationData = data.hydrationData;
+//   console.log(hydrationData);
+// }).then(startApp);
+
 function startApp() {
+  // returnData();
+  console.log(userData);
+  console.log(hydrationData);
   let userList = [];
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
@@ -188,4 +216,4 @@ function makeStepStreakHTML(id, activityInfo, userStorage, method) {
   return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
 }
 
-startApp();
+// startApp()
