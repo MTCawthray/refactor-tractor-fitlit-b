@@ -104,7 +104,7 @@ function startApp() {
   addSleepInfo(randomHistory, currentUserId, sleepRepo);
   let winnerNow = makeWinnerID(activityRepo, currentUser, currentDate, userRepo);
   addActivityInfo(currentUserId, activityRepo, winnerNow);
-  // addFriendGameInfo(userNowId, activityRepo, userRepo, today, randomHistory, userNow);
+  addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, randomHistory, currentUser);
 }
 //below we pass an argument of empty array to populate with our user objects
 // function makeUsers(array) {
@@ -213,20 +213,20 @@ function makeMinutesHTML(method) {
   return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
 }
 
-// function addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user) {
-//   friendChallengeListToday.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
-//   streakList.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps')));
-//   streakListMinutes.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive')));
-//   friendChallengeListHistory.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
-//   bigWinner.insertAdjacentHTML('afterBegin', `THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`)
-// }
+function addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user) {
+  friendChallengeListToday.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+  streakList.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps')));
+  streakListMinutes.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive')));
+  friendChallengeListHistory.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+  bigWinner.insertAdjacentHTML('afterBegin', `THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`)
+}
 
-// function makeFriendChallengeHTML(id, activityInfo, userStorage, method) {
-//   return method.map(friendChallengeData => `<li class="historical-list-listItem">Your friend ${friendChallengeData} average steps.</li>`).join('');
-// }
+function makeFriendChallengeHTML(id, activityInfo, userStorage, method) {
+  return method.map(friendChallengeData => `<li class="historical-list-listItem">Your friend ${friendChallengeData} average steps.</li>`).join('');
+}
 
-// function makeStepStreakHTML(id, activityInfo, userStorage, method) {
-//   return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
-// }
+function makeStepStreakHTML(id, activityInfo, userStorage, method) {
+  return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
+}
 
 // // startApp()
