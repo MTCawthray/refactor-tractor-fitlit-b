@@ -109,15 +109,6 @@ describe('Hydration', function() {
     expect(hydration.hydrationData[4].date).to.equal('2018/10/23');
   });
 
-  it('should find the average water intake per day for a user', function() {
-    expect(hydration.calculateAverageOunces(3)).to.equal(2);
-  });
-
-  it('should find the water intake for a user on a specified date', function() {
-    expect(hydration.calculateDailyOunces(1, "2019/06/15")).to.equal(37);
-    expect(hydration.calculateDailyOunces(4, "2019/04/15")).to.equal(36);
-  });
-
   it('should find water intake by day for first week', function() {
     const user3 = new User({
       id: 3,
