@@ -16,6 +16,15 @@ class UserRepo {
   /////////////////////////////////////////////
   
   // NEW HELPER FUNCTIONS
+  getAllUsersAvgByDate(date, property, activityData) {
+    const dataLog = activityData.filter(entry => entry.date === date);
+    const propertyLog = dataLog.map(entry => entry[property]);
+    const total = propertyLog.reduce((sum, num) => {
+      return sum + num;
+    });
+
+    return Math.round(total / dataLog.length);
+  }
 
   calcAvgAllUsers(key) {
     var result = this.users.reduce((acc, dataSet) => {
