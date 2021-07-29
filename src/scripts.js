@@ -89,7 +89,7 @@ function startApp() {
   // makeUsers(userList);
   // let userRepo = new UserRepo(userList);
   let hydrationRepo = new Hydration(hydrationData);
-  // let sleepRepo = new Sleep(sleepData);
+  let sleepRepo = new Sleep(sleepData);
   // let activityRepo = new Activity(activityData);
   // var userNowId = pickUser();
   // let userNow = getUserById(userNowId, userRepo);
@@ -101,7 +101,7 @@ function startApp() {
   historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
   addInfoToSidebar(currentUser, userRepo);
   addHydrationInfo(randomHistory, currentUserId, hydrationRepo);
-  // addSleepInfo(userNowId, sleepRepo, today, userRepo, randomHistory);
+  addSleepInfo(randomHistory, currentUserId, sleepRepo);
   // let winnerNow = makeWinnerID(activityRepo, userNow, today, userRepo);
   // addActivityInfo(userNowId, activityRepo, today, userRepo, randomHistory, userNow, winnerNow);
   // addFriendGameInfo(userNowId, activityRepo, userRepo, today, randomHistory, userNow);
@@ -171,17 +171,18 @@ function makeHydrationHTML(method) {
   return method.map(drinkData => `<li class="historical-list-listItem">On ${drinkData}oz</li>`).join('');
 }
 
-// function addSleepInfo(id, sleepInfo, dateString, userStorage, laterDateString) {
-//   sleepToday.insertAdjacentHTML("afterBegin", `<p>You slept</p> <p><span class="number">${sleepInfo.calculateDailySleep(id, dateString)}</span></p> <p>hours today.</p>`);
-//   sleepQualityToday.insertAdjacentHTML("afterBegin", `<p>Your sleep quality was</p> <p><span class="number">${sleepInfo.calculateDailySleepQuality(id, dateString)}</span></p><p>out of 5.</p>`);
-//   avUserSleepQuality.insertAdjacentHTML("afterBegin", `<p>The average user's sleep quality is</p> <p><span class="number">${Math.round(sleepInfo.calculateAllUserSleepQuality() * 100) / 100}</span></p><p>out of 5.</p>`);
-//   sleepThisWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(dateString, id, userStorage)));
-//   sleepEarlierWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
-// }
+function addSleepInfo(randomDate, id, repo) {
+  sleepToday.insertAdjacentHTML("afterBegin", `<p>You slept</p> <p><span class="number">${currentUser.getDateAmount(currentDate, sleepData, 'hoursSlept')}</span></p> <p>hours today.</p>`);
+  sleepQualityToday.insertAdjacentHTML("afterBegin", `<p>Your sleep quality was</p> <p><span class="number">${currentUser.getDateAmount(currentDate, sleepData, 'sleepQuality')}</span></p><p>out of 5.</p>`);
+  avUserSleepQuality.insertAdjacentHTML("afterBegin", `<p>The average user's sleep quality is</p> <p><span class="number">${currentUser.calcAvgAllTime(sleepData, 'sleepQuality')}</span></p><p>out of 5.</p>`);
+ 
+  sleepThisWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(currentUser.getOverWeekAmount(startDate, sleepData, 'hoursSlept')));
+  sleepEarlierWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(repo.calculateWeekSleep(randomDate, id, userRepo)));
+}
 
-// function makeSleepHTML(id, sleepInfo, userStorage, method) {
-//   return method.map(sleepData => `<li class="historical-list-listItem">On ${sleepData} hours</li>`).join('');
-// }
+function makeSleepHTML(method) {
+  return method.map(sleepData => `<li class="historical-list-listItem">On ${sleepData} hours</li>`).join('');
+}
 
 // function makeSleepQualityHTML(id, sleepInfo, userStorage, method) {
 //   return method.map(sleepQualityData => `<li class="historical-list-listItem">On ${sleepQualityData}/5 quality of sleep</li>`).join('');
