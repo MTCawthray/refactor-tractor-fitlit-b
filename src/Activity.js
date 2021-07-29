@@ -2,6 +2,43 @@ class Activity {
   constructor(activityData) {
     this.activityData = activityData
   }
+  getMilesFromStepsByDate(id, date, userRepo) {
+    let userStepsByDate = this.activityData.find(data => id === data.userID && date === data.date);
+    return parseFloat(((userStepsByDate.numSteps * userRepo.strideLength) / 5280).toFixed(1));
+  }
+  getActiveMinutesByDate(id, date) {
+    let userActivityByDate = this.activityData.find(data => id === data.userID && date === data.date);
+    return userActivityByDate.minutesActive;
+  }
+  calculateActiveAverageForWeek(id, date, userRepo) {
+    return parseFloat((userRepo.getWeekFromDate(date, id, this.activityData).reduce((acc, elem) => {
+      return acc += elem.minutesActive;
+    }, 0) / 7).toFixed(1));
+  }
+  accomplishStepGoal(id, date, userRepo) {
+    let userStepsByDate = this.activityData.find(data => id === data.userID && date === data.date);
+    if (userStepsByDate.numSteps === userRepo.dailyStepGoal) {
+      return true;
+    }
+    return false
+  }
+  getDaysGoalExceeded(id, userRepo) {
+    return this.activityData.filter(data => id === data.userID && data.numSteps > userRepo.dailyStepGoal).map(data => data.date);
+  }
+  getStairRecord(id) {
+    return this.activityData.filter(data => id === data.userID).reduce((acc, elem) => (elem.flightsOfStairs > acc) ? elem.flightsOfStairs : acc, 0);
+  }
+  getAllUserAverageForDay(date, userRepo, relevantData) {
+    let selectedDayData = userRepo.chooseDayDataForAllUsers(this.activityData, date);
+    return parseFloat((selectedDayData.reduce((acc, elem) => acc += elem[relevantData], 0) / selectedDayData.length).toFixed(1));
+  }
+  userDataForToday(id, date, userRepo, relevantData) {
+    let userData = userRepo.getDataFromUserID(id, this.activityData);
+    return userData.find(data => data.date === date)[relevantData];
+  }
+  userDataForWeek(id, date, userRepo, releventData) {
+    return userRepo.getWeekFromDate(date, id, this.activityData).map((data) => `${data.date}: ${data[releventData]}`);
+  }
 
   // Friends
 
