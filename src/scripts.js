@@ -75,27 +75,10 @@ function getRandomIndex(array) {
   return index;
 }
 
-// getData('users').then(data => {
-//   userData = data.userData;
-// }).then(startApp);
-
-// getData('hydration').then(data => {
-//   hydrationData = data.hydrationData;
-//   console.log(hydrationData);
-// }).then(startApp);
-
 function startApp() {
-  // let userList = [];
-  // makeUsers(userList);
-  // let userRepo = new UserRepo(userList);
   let hydrationRepo = new Hydration(hydrationData);
   let sleepRepo = new Sleep(sleepData);
   let activityRepo = new Activity(activityData);
-  // var userNowId = pickUser();
-  // let userNow = getUserById(userNowId, userRepo);
-  // let today = makeToday(userRepo, currentUserId, hydrationData);
-  // let startDate = "2020/01/15";
-  // console.log(startDate)
   let randomHistory = makeRandomDate(userRepo, currentUserId, hydrationData);
   currentDateHere.innerHTML = `${currentDate}`;
   historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
@@ -106,22 +89,6 @@ function startApp() {
   addActivityInfo(currentUserId, activityRepo, winnerNow);
   addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, currentUser);
 }
-//below we pass an argument of empty array to populate with our user objects
-// function makeUsers(array) {
-//   userData.forEach(function(dataItem) { //userData will have to change to our API input
-//     let user = new User(dataItem);
-//     array.push(user);//now our userList array holds the user instances
-//     //could we move userList array into this function and just return the userList?
-//   })
-// }
-
-// function pickUser() {
-//   return Math.floor(Math.random() * 50);
-// }
-
-// function getUserById(id, listRepo) {
-//   return listRepo.getDataFromID(id);
-// }
 
 
 function addInfoToSidebar(user, userStorage) {
