@@ -1,5 +1,3 @@
-import sleepData from './data/sleep';
-
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
