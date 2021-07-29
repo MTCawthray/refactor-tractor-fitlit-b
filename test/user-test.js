@@ -120,7 +120,7 @@ describe('User', () => {
     it('should be able to retrieve the hours slept data for a user over the course of a week', () => {
       const hoursSleptWeek = user1.getOverWeekAmount('2019/06/15', sampleSleepData, 'hoursSlept');
       
-      expect(hoursSleptWeek).to.eql([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
+      expect(hoursSleptWeek).to.eql(["2019/06/15: 6.1", "2019/06/16: 4.1", "2019/06/17: 8", "2019/06/18: 10.4", "2019/06/19: 10.7", "2019/06/20: 9.3", "2019/06/21: 7.8"]);
     });
   
     it('should be able to retrieve the sleep quality data for a user over the course of a week', () => {
