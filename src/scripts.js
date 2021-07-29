@@ -13,38 +13,38 @@ import Sleep from './Sleep';
 import UserRepo from './User-repo';
 import domUpdates from './domUpdates';
 
-var sidebarName = document.getElementById('sidebarName');
-var stepGoalCard = document.getElementById('stepGoalCard');
-var userAddress = document.getElementById('userAddress');
-var userEmail = document.getElementById('userEmail');
-var userStridelength = document.getElementById('userStridelength');
-var currentDateHere = document.getElementById('currentDate');
+const sidebarName = document.getElementById('sidebarName');
+const stepGoalCard = document.getElementById('stepGoalCard');
+const userAddress = document.getElementById('userAddress');
+const userEmail = document.getElementById('userEmail');
+const userStridelength = document.getElementById('userStridelength');
+const currentDateHere = document.getElementById('currentDate');
 
-var hydrationToday = document.getElementById('hydrationToday');
-var hydrationAverage = document.getElementById('hydrationAverage');
-var hydrationThisWeek = document.getElementById('hydrationThisWeek');
-var hydrationEarlierWeek = document.getElementById('hydrationEarlierWeek');
-var historicalWeek = document.querySelectorAll('.historicalWeek');
-var sleepToday = document.getElementById('sleepToday');
-var sleepQualityToday = document.getElementById('sleepQualityToday');
-var avUserSleepQuality = document.getElementById('avUserSleepQuality');
-var sleepThisWeek = document.getElementById('sleepThisWeek');
-var sleepEarlierWeek = document.getElementById('sleepEarlierWeek');
-var friendChallengeListToday = document.getElementById('friendChallengeListToday');
-var friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
-var bigWinner = document.getElementById('bigWinner');
-var userStepsToday = document.getElementById('userStepsToday');
-var avgStepsToday = document.getElementById('avgStepsToday');
-var userStairsToday = document.getElementById('userStairsToday');
-var avgStairsToday = document.getElementById('avgStairsToday');
-var userMinutesToday = document.getElementById('userMinutesToday');
-var avgMinutesToday = document.getElementById('avgMinutesToday');
-var userStepsThisWeek = document.getElementById('userStepsThisWeek');
-var userStairsThisWeek = document.getElementById('userStairsThisWeek');
-var userMinutesThisWeek = document.getElementById('userMinutesThisWeek');
-var bestUserSteps = document.getElementById('bestUserSteps');
-var streakList = document.getElementById('streakList');
-var streakListMinutes = document.getElementById('streakListMinutes')
+const hydrationToday = document.getElementById('hydrationToday');
+const hydrationAverage = document.getElementById('hydrationAverage');
+const hydrationThisWeek = document.getElementById('hydrationThisWeek');
+const hydrationEarlierWeek = document.getElementById('hydrationEarlierWeek');
+const historicalWeek = document.querySelectorAll('.historicalWeek');
+const sleepToday = document.getElementById('sleepToday');
+const sleepQualityToday = document.getElementById('sleepQualityToday');
+const avUserSleepQuality = document.getElementById('avUserSleepQuality');
+const sleepThisWeek = document.getElementById('sleepThisWeek');
+const sleepEarlierWeek = document.getElementById('sleepEarlierWeek');
+const friendChallengeListToday = document.getElementById('friendChallengeListToday');
+const friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
+const bigWinner = document.getElementById('bigWinner');
+const userStepsToday = document.getElementById('userStepsToday');
+const avgStepsToday = document.getElementById('avgStepsToday');
+const userStairsToday = document.getElementById('userStairsToday');
+const avgStairsToday = document.getElementById('avgStairsToday');
+const userMinutesToday = document.getElementById('userMinutesToday');
+const avgMinutesToday = document.getElementById('avgMinutesToday');
+const userStepsThisWeek = document.getElementById('userStepsThisWeek');
+const userStairsThisWeek = document.getElementById('userStairsThisWeek');
+const userMinutesThisWeek = document.getElementById('userMinutesThisWeek');
+const bestUserSteps = document.getElementById('bestUserSteps');
+const streakList = document.getElementById('streakList');
+const streakListMinutes = document.getElementById('streakListMinutes')
 
 window.addEventListener('load', returnData)
 
@@ -118,12 +118,12 @@ function makeWinnerID(activityInfo, user, dateString, userStorage) {
 }
 
 function makeToday(userStorage, id, dataSet) {
-  var sortedArray = userStorage.makeSortedUserArray(id, dataSet);
+  let sortedArray = userStorage.makeSortedUserArray(id, dataSet);
   return sortedArray[0].date;
 }
 
 function makeRandomDate(userStorage, id, dataSet) {
-  var sortedArray = userStorage.makeSortedUserArray(id, dataSet);
+  let sortedArray = userStorage.makeSortedUserArray(id, dataSet);
   return sortedArray[Math.floor(Math.random() * sortedArray.length + 1)].date
 
 }
