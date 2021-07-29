@@ -130,7 +130,7 @@ describe('User', () => {
     });
 
     it('should be able to retrieve the daily steps for a user over the course of a week', () => {
-      expect(user1.getOverWeekAmount('2019/06/15', sampleActivityData, 'numSteps')).to.eql([3577, 6637, 14329, 4419, 8429, 14478, 6760]);
+      expect(user1.getOverWeekAmount('2019/06/15', sampleActivityData, 'numSteps')).to.eql(["2019/06/15: 3577", "2019/06/16: 6637", "2019/06/17: 14329", "2019/06/18: 4419", "2019/06/19: 8429", "2019/06/20: 14478", "2019/06/21: 6760"]);
     });
   
     it('should be able to retrieve the daily min active for a user over the course of a week', () => {
