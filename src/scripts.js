@@ -64,7 +64,9 @@ function returnData() {
     userRepo = new UserRepo(userData);
     currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)))
     currentUserId = currentUser.id;
+    // can we make a function that returns a random date? 
     currentDate = "2020/01/22";
+    // can we make a function that splices the current date and returns it 7 days earlier???
     startDate = "2020/01/15";
     console.log(currentUser)
   }).then(startApp);
