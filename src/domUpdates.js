@@ -8,6 +8,8 @@ const domUpdates = {
   renderFriendHTML(names) {
     let friendList = document.getElementById('friendList');
     friendList.insertAdjacentHTML('afterBegin', names.map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`));
-  }
+  },
+
+
 }
 export default domUpdates;
