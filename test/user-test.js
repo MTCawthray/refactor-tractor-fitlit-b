@@ -138,7 +138,7 @@ describe('User', () => {
     });
   
     it('should be able to retrieve the daily flights of stairs for a user over the course of a week', () => {
-      expect(user1.getOverWeekAmount('2019/06/15', sampleActivityData, 'flightsOfStairs')).to.eql([16, 36, 18, 33, 2, 12, 6]);
+      expect(user1.getOverWeekAmount('2019/06/15', sampleActivityData, 'flightsOfStairs')).to.eql(["2019/06/15: 16", "2019/06/16: 36", "2019/06/17: 18", "2019/06/18: 33", "2019/06/19: 2", "2019/06/20: 12", "2019/06/21: 6"]);
     });
   });
 
