@@ -105,14 +105,6 @@ describe('User', () => {
     
   });
 
-  describe('calcAvgForDate()', () => {
-
-    it('should be a function', () => {
-      expect(user2.calcAvgForDate).to.be.a('function');
-    });
-
-  });
-
   describe('getOverWeekAmount()', () => {
 
     it('should be a function', () => {
@@ -122,12 +114,12 @@ describe('User', () => {
     it('should be able to retrieve the daily water oz intake for a user over the course of a week', () => {
       const ouncesOverWeek = user1.getOverWeekAmount('2019/06/15', sampleHydrationData, "numOunces");
   
-      expect(ouncesOverWeek).to.eql([37, 69, 96, 61, 91, 50, 50]);
+      expect(ouncesOverWeek).to.eql(["2019/06/15: 37", "2019/06/16: 69", "2019/06/17: 96", "2019/06/18: 61", "2019/06/19: 91", "2019/06/20: 50", "2019/06/21: 50"]);
     });
 
     it('should be able to retrieve the hours slept data for a user over the course of a week', () => {
       const hoursSleptWeek = user1.getOverWeekAmount('2019/06/15', sampleSleepData, 'hoursSlept');
-  
+      
       expect(hoursSleptWeek).to.eql([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
     });
   
