@@ -42,7 +42,7 @@ class User {
     const index = usersData.findIndex(entry => entry.date === startDate);
     const weekLog = usersData.slice(index, index + 7);
 
-    return weekLog.map(entry => entry[property]);
+    return weekLog.map(data => `${data.date}: ${data[property]}`);
   }
 
   calcAvgOverWeek(data, startDate, property) {

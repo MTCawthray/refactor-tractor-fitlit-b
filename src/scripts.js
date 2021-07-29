@@ -18,7 +18,7 @@ var stepGoalCard = document.getElementById('stepGoalCard');
 var userAddress = document.getElementById('userAddress');
 var userEmail = document.getElementById('userEmail');
 var userStridelength = document.getElementById('userStridelength');
-var currentDate = document.getElementById('currentDate');
+var currentDateHere = document.getElementById('currentDate');
 
 var hydrationToday = document.getElementById('hydrationToday');
 var hydrationAverage = document.getElementById('hydrationAverage');
@@ -48,7 +48,7 @@ var streakListMinutes = document.getElementById('streakListMinutes')
 
 window.addEventListener('load', returnData)
 
-let userData, hydrationData, sleepData, activityData, currentUser, userRepo, currentUserId;
+let userData, hydrationData, sleepData, activityData, currentUser, userRepo, currentUserId, currentDate, startDate;
 
 function getData() {
   return Promise.all([fetchData('users'), fetchData('hydration'), fetchData('sleep'), fetchData('activity')]);
@@ -64,6 +64,8 @@ function returnData() {
     userRepo = new UserRepo(userData);
     currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)))
     currentUserId = currentUser.id;
+    currentDate = "2020/01/22";
+    startDate = "2020/01/15";
     console.log(currentUser)
   }).then(startApp);
 }
@@ -91,12 +93,14 @@ function startApp() {
   // let activityRepo = new Activity(activityData);
   // var userNowId = pickUser();
   // let userNow = getUserById(userNowId, userRepo);
-  let today = makeToday(userRepo, currentUserId, hydrationData);
+  // let today = makeToday(userRepo, currentUserId, hydrationData);
+  // let startDate = "2020/01/15";
+  // console.log(startDate)
   let randomHistory = makeRandomDate(userRepo, currentUserId, hydrationData);
-  currentDate.innerHTML = `${today}`;
+  currentDateHere.innerHTML = `${currentDate}`;
   historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
   addInfoToSidebar(currentUser, userRepo);
-  addHydrationInfo(currentUserId, hydrationRepo, today, userRepo, randomHistory);
+  addHydrationInfo(randomHistory);
   // addSleepInfo(userNowId, sleepRepo, today, userRepo, randomHistory);
   // let winnerNow = makeWinnerID(activityRepo, userNow, today, userRepo);
   // addActivityInfo(userNowId, activityRepo, today, userRepo, randomHistory, userNow, winnerNow);
@@ -155,14 +159,15 @@ function makeRandomDate(userStorage, id, dataSet) {
 
 }
 
-function addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
-  hydrationToday.insertAdjacentHTML('afterBegin', `<p>You drank</p><p><span class="number">${currentUser.getDateAmount(dateString, hydrationData, 'numOunces')}</span></p><p>oz water today.</p>`);
+function addHydrationInfo(randomHistory) {
+  hydrationToday.insertAdjacentHTML('afterBegin', `<p>You drank</p><p><span class="number">${currentUser.getDateAmount(currentDate, hydrationData, 'numOunces')}</span></p><p>oz water today.</p>`);
   hydrationAverage.insertAdjacentHTML('afterBegin', `<p>Your average water intake is</p><p><span class="number">${currentUser.calcAvgAllTime(hydrationData, 'numOunces')}</span></p> <p>oz per day.</p>`)
-  hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateFirstWeekOunces(userStorage, id)));
-  hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)));
+
+  hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(currentUser.getOverWeekAmount(startDate, hydrationData, 'numOunces')));
+  // hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)));
 }
 
-function makeHydrationHTML(id, hydrationInfo, userStorage, method) {
+function makeHydrationHTML(method) {
   return method.map(drinkData => `<li class="historical-list-listItem">On ${drinkData}oz</li>`).join('');
 }
 
