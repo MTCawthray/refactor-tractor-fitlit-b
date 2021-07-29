@@ -104,7 +104,7 @@ function startApp() {
   addSleepInfo(randomHistory, currentUserId, sleepRepo);
   let winnerNow = makeWinnerID(activityRepo, currentUser, currentDate, userRepo);
   addActivityInfo(currentUserId, activityRepo, winnerNow);
-  addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, randomHistory, currentUser);
+  addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, currentUser);
 }
 //below we pass an argument of empty array to populate with our user objects
 // function makeUsers(array) {
@@ -213,7 +213,7 @@ function makeMinutesHTML(method) {
   return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
 }
 
-function addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user) {
+function addFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
   friendChallengeListToday.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
   streakList.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps')));
   streakListMinutes.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive')));
