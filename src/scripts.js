@@ -184,10 +184,6 @@ function makeSleepHTML(method) {
   return method.map(sleepData => `<li class="historical-list-listItem">On ${sleepData} hours</li>`).join('');
 }
 
-// function makeSleepQualityHTML(id, sleepInfo, userStorage, method) {
-//   return method.map(sleepQualityData => `<li class="historical-list-listItem">On ${sleepQualityData}/5 quality of sleep</li>`).join('');
-// }
-
 function addActivityInfo(id, repo, winnerId) {
   userStairsToday.insertAdjacentHTML("afterBegin", `<p>Stair Count:</p><p>You</><p><span class="number">${currentUser.getDateAmount(currentDate, activityData, 'flightsOfStairs')}</span></p>`)
   avgStairsToday.insertAdjacentHTML("afterBegin", `<p>Stair Count: </p><p>All Users</p><p><span class="number">${userRepo.getAllUsersAvgByDate(currentDate, 'flightsOfStairs', activityData)}</span></p>`)
