@@ -214,19 +214,17 @@ function makeMinutesHTML(method) {
 }
 
 function addFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
-  friendChallengeListToday.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
-  streakList.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'numSteps')));
-  streakListMinutes.insertAdjacentHTML("afterBegin", makeStepStreakHTML(id, activityInfo, userStorage, activityInfo.getStreak(userStorage, id, 'minutesActive')));
-  friendChallengeListHistory.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+  friendChallengeListToday.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+  streakList.insertAdjacentHTML("afterBegin", makeStepStreakHTML(activityInfo.getStreak(userStorage, id, 'numSteps')));
+  streakListMinutes.insertAdjacentHTML("afterBegin", makeStepStreakHTML(activityInfo.getStreak(userStorage, id, 'minutesActive')));
+  friendChallengeListHistory.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
   bigWinner.insertAdjacentHTML('afterBegin', `THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`)
 }
 
-function makeFriendChallengeHTML(id, activityInfo, userStorage, method) {
+function makeFriendChallengeHTML(method) {
   return method.map(friendChallengeData => `<li class="historical-list-listItem">Your friend ${friendChallengeData} average steps.</li>`).join('');
 }
 
-function makeStepStreakHTML(id, activityInfo, userStorage, method) {
+function makeStepStreakHTML(method) {
   return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
 }
-
-// // startApp()
