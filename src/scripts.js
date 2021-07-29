@@ -100,7 +100,7 @@ function startApp() {
   currentDateHere.innerHTML = `${currentDate}`;
   historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
   addInfoToSidebar(currentUser, userRepo);
-  addHydrationInfo(randomHistory);
+  addHydrationInfo(randomHistory, currentUserId, hydrationRepo);
   // addSleepInfo(userNowId, sleepRepo, today, userRepo, randomHistory);
   // let winnerNow = makeWinnerID(activityRepo, userNow, today, userRepo);
   // addActivityInfo(userNowId, activityRepo, today, userRepo, randomHistory, userNow, winnerNow);
@@ -159,12 +159,12 @@ function makeRandomDate(userStorage, id, dataSet) {
 
 }
 
-function addHydrationInfo(randomHistory) {
+function addHydrationInfo(randomDate, id, repo) {
   hydrationToday.insertAdjacentHTML('afterBegin', `<p>You drank</p><p><span class="number">${currentUser.getDateAmount(currentDate, hydrationData, 'numOunces')}</span></p><p>oz water today.</p>`);
   hydrationAverage.insertAdjacentHTML('afterBegin', `<p>Your average water intake is</p><p><span class="number">${currentUser.calcAvgAllTime(hydrationData, 'numOunces')}</span></p> <p>oz per day.</p>`)
 
   hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(currentUser.getOverWeekAmount(startDate, hydrationData, 'numOunces')));
-  hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)));
+  hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(repo.calculateRandomWeekOunces(randomDate, id, userRepo)));
 }
 
 function makeHydrationHTML(method) {
