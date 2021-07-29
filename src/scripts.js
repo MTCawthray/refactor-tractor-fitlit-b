@@ -164,7 +164,7 @@ function addHydrationInfo(randomHistory) {
   hydrationAverage.insertAdjacentHTML('afterBegin', `<p>Your average water intake is</p><p><span class="number">${currentUser.calcAvgAllTime(hydrationData, 'numOunces')}</span></p> <p>oz per day.</p>`)
 
   hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(currentUser.getOverWeekAmount(startDate, hydrationData, 'numOunces')));
-  // hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)));
+  hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)));
 }
 
 function makeHydrationHTML(method) {
