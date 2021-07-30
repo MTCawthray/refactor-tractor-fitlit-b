@@ -46,7 +46,7 @@ h1 {
 }
 
 .sidebar-header-userInfo {
-  font-family: sans-serif;
+  font-family: $sans;
   font-weight: bold;
   font-size: 1.2em;
   margin: .5em .5em .5em .5em;
@@ -143,7 +143,7 @@ h1 {
   height: auto;
   font-size: 1.5em;
   margin: .5em;
-  font-family: sans-serif;
+  font-family: $sans;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -156,7 +156,7 @@ h1 {
   height: auto;
   font-size: 1.5em;
   margin: .5em;
-  font-family: sans-serif;
+  font-family: $sans;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -169,7 +169,7 @@ h1 {
   height: auto;
   font-size: 1.5em;
   margin: .3em;
-  font-family: sans-serif;
+  font-family: $sans;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -181,7 +181,7 @@ h1 {
   background-color: $teal;
   font-size: 1em;
   margin: .5em;
-  font-family: sans-serif;
+  font-family: $sans;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -193,7 +193,7 @@ h1 {
   background-color: $pink;
   font-size: 1em;
   margin: .5em;
-  font-family: sans-serif;
+  font-family: $sans;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -205,7 +205,7 @@ h1 {
   background-color: $yellow;
   font-size: 1em;
   margin: .5em;
-  font-family: sans-serif;
+  font-family: $sans;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -248,5 +248,5 @@ h1 {
 .historical-list-listItem {
   padding: .3em;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: $sans;
 }
