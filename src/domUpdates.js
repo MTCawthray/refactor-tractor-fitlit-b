@@ -94,6 +94,29 @@ const domUpdates = {
   
   makeMinutesHTML(method) {
     return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
+  },
+
+  renderFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
+    const friendChallengeListToday = document.getElementById('friendChallengeListToday');
+    const streakList = document.getElementById('streakList');
+    const streakListMinutes = document.getElementById('streakListMinutes');
+    const friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
+    const bigWinner = document.getElementById('bigWinner');
+
+    friendChallengeListToday.insertAdjacentHTML("afterBegin", this.makeFriendChallengeHTML(activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+    streakList.insertAdjacentHTML("afterBegin", this.makeStepStreakHTML(activityInfo.getStreak(userStorage, id, 'numSteps')));
+    streakListMinutes.insertAdjacentHTML("afterBegin", this.makeStepStreakHTML(activityInfo.getStreak(userStorage, id, 'minutesActive')));
+    friendChallengeListHistory.insertAdjacentHTML("afterBegin", this.makeFriendChallengeHTML(activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+    bigWinner.insertAdjacentHTML('afterBegin', `THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`)
+  },
+  
+  makeFriendChallengeHTML(method) {
+    return method.map(friendChallengeData => `<li class="historical-list-listItem">Your friend ${friendChallengeData} average steps.</li>`).join('');
+  },
+  
+  makeStepStreakHTML(method) {
+    return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
   }
 }
+
 export default domUpdates;
