@@ -225,7 +225,7 @@ describe('Friend Activity', function() {
 
   it('should get a users ranked friendslist activity for a chosen week with names', function() {
     expect(activity.showChallengeListAndWinner(user4, "2019/06/15", userRepo)).to.eql([
-      'Allie McCarthy: 9552', 'Alex Roth: 7475.5'
+      'Allie McCarthy: 4294', 'Alex Roth: 3577'
     ])
   });
   
