@@ -96,8 +96,8 @@ function startApp() {
 function addInfoToSidebar(user, userStorage) {
   sidebarName.innerText = user.name;
   displayFirstName(user);
-  stepGoalCard.innerText = `Your daily step goal is ${user.dailyStepGoal}.`
-  avStepGoalCard.innerText = `The average daily step goal is ${userStorage.calculateAverageStepGoal()}`;
+  stepGoal.innerText = `Your daily step goal is ${user.dailyStepGoal}.`
+  avStepGoal.innerText = `The average daily step goal is ${userStorage.calculateAverageStepGoal()}`;
   userAddress.innerText = user.address;
   userEmail.innerText = user.email;
   userStridelength.innerText = `Your stridelength is ${user.strideLength} meters.`;
