@@ -1,6 +1,56 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+// COLORS
 
-body {
-  background-color: $primary-background;
+$dark-gray: #4d4e4f;
+$white: #ffffff;
+$medium-gray: #9A9DAB;
+$black: black;
+$teal: #5BC8AC;
+$pink: #EC96A4;
+$yellow: #DFE166;
+
+// FONTS
+
+$sans: sans-serif;
+$open: 'Open Sans';
+
+// LAYOUT
+
+// flex
+
+@mixin flex-row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+}
+
+// cards
+
+@mixin card-today() {
+  text-align: center;
+  font-size: 1.5em;
+  margin: .5em;
+  font-family: $sans;
+  height: auto;
+  @include flex-column();
+  justify-content: space-between;
+}
+
+@mixin card-history() {
+  text-align: center;
+  font-size: 1em;
+  margin: .5em;
+  font-family: $sans;
+  @include flex-column();
+  justify-content: flex-start;
+  width: 50%;
+}
+
+// borders
+
+@mixin small-black-border() {
+  border: 1px solid $black;
 }
