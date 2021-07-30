@@ -50,11 +50,7 @@ describe('User Repo', function() {
   });
 
   it('should return the average of all users step goals', function() {
-
-
-    userRepo.calculateAverageStepGoal();
-
-    expect(userRepo.calculateAverageStepGoal()).to.eql(9500);
+    expect(userRepo.calculateAverageStepGoal()).to.equal(9500);
   });
 
   describe('array changes', function() {
