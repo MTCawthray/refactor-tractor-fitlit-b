@@ -2,7 +2,15 @@ const domUpdates = {
   renderFirstName(user) {
     let headerText = document.getElementById('headerText');
     headerText.innerText = `${user.getFirstName()}'s Activity Tracker`;
-  
+  },
+
+  renderInfoCard() {
+    const sidebarName = document.getElementById('sidebarName');
+    const userAddress = document.getElementById('userAddress');
+    const userEmail = document.getElementById('userEmail');
+    const userStridelength = document.getElementById('userStridelength');
+    const stepGoal = document.getElementById('stepGoal');
+    const avStepGoalCard = document.getElementById('avStepGoal');
   },
 
   renderFriendHTML(names) {
