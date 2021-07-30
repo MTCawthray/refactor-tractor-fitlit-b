@@ -94,18 +94,19 @@ function startApp() {
 
 
 function addInfoToSidebar(user, userStorage) {
-  sidebarName.innerText = user.name;
+  const avStepGoal = userStorage.calculateAverageStepGoal();
+  
   displayFirstName(user);
-  stepGoal.innerText = `Your daily step goal is ${user.dailyStepGoal}.`
-  avStepGoal.innerText = `The average daily step goal is ${userStorage.calculateAverageStepGoal()}`;
-  userAddress.innerText = user.address;
-  userEmail.innerText = user.email;
-  userStridelength.innerText = `Your stridelength is ${user.strideLength} meters.`;
+  displayInfoCard(user.name, user.address, user.email, user.strideLength, user.dailyStepGoal, avStepGoal);
   displayFriendHTML(user, userStorage);
 }
 
 function displayFirstName(user) {
-domUpdates.renderFirstName(user);
+  domUpdates.renderFirstName(user);
+}
+
+function displayInfoCard (name, address, email, strideLength, stepGoal, avStepGoal) {
+  domUpdates.renderInfoCard(name, address, email, strideLength, stepGoal, avStepGoal);
 }
 
 function displayFriendHTML(user, userStorage) {
