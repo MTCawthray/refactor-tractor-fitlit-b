@@ -60,6 +60,40 @@ const domUpdates = {
     return method.map(sleepData => `<li class="historical-list-listItem">On ${sleepData} hours</li>`).join('');
   },
 
+  renderActivityInfo(currentUser, currentDate, activityData, startDate, userRepo, id, repo, winnerId) {
+    const userStepsToday = document.getElementById('userStepsToday');
+    const avgStepsToday = document.getElementById('avgStepsToday');
+    const userStairsToday = document.getElementById('userStairsToday');
+    const avgStairsToday = document.getElementById('avgStairsToday');
+    const userMinutesToday = document.getElementById('userMinutesToday');
+    const avgMinutesToday = document.getElementById('avgMinutesToday');
+    const userStepsThisWeek = document.getElementById('userStepsThisWeek');
+    const userStairsThisWeek = document.getElementById('userStairsThisWeek');
+    const userMinutesThisWeek = document.getElementById('userMinutesThisWeek');
+    const bestUserSteps = document.getElementById('bestUserSteps');
 
+    userStairsToday.insertAdjacentHTML("afterBegin", `<p>Stair Count:</p><p>You</><p><span class="number">${currentUser.getDateAmount(currentDate, activityData, 'flightsOfStairs')}</span></p>`)
+    avgStairsToday.insertAdjacentHTML("afterBegin", `<p>Stair Count: </p><p>All Users</p><p><span class="number">${userRepo.getAllUsersAvgByDate(currentDate, 'flightsOfStairs', activityData)}</span></p>`)
+    userStepsToday.insertAdjacentHTML("afterBegin", `<p>Step Count:</p><p>You</p><p><span class="number">${currentUser.getDateAmount(currentDate, activityData, 'numSteps')}</span></p>`)
+    avgStepsToday.insertAdjacentHTML("afterBegin", `<p>Step Count:</p><p>All Users</p><p><span class="number">${userRepo.getAllUsersAvgByDate(currentDate, 'numSteps', activityData)}</span></p>`)
+    userMinutesToday.insertAdjacentHTML("afterBegin", `<p>Active Minutes:</p><p>You</p><p><span class="number">${currentUser.getDateAmount(currentDate, activityData, 'minutesActive')}</span></p>`)
+    avgMinutesToday.insertAdjacentHTML("afterBegin", `<p>Active Minutes:</p><p>All Users</p><p><span class="number">${userRepo.getAllUsersAvgByDate(currentDate, 'minutesActive', activityData)}</span></p>`)
+    userStepsThisWeek.insertAdjacentHTML("afterBegin", this.makeStepsHTML(currentUser.getOverWeekAmount(startDate, activityData, 'numSteps')));
+    userStairsThisWeek.insertAdjacentHTML("afterBegin", this.makeStairsHTML(currentUser.getOverWeekAmount(startDate, activityData, 'flightsOfStairs')));
+    userMinutesThisWeek.insertAdjacentHTML("afterBegin", this.makeMinutesHTML(currentUser.getOverWeekAmount(startDate, activityData, 'minutesActive')));
+    bestUserSteps.insertAdjacentHTML("afterBegin", this.makeStepsHTML(repo.userDataForWeek(winnerId, currentDate, userRepo, "numSteps")));
+  },
+
+  makeStepsHTML(method) {
+    return method.map(activityData => `<li class="historical-list-listItem">On ${activityData} steps</li>`).join('');
+  },
+  
+  makeStairsHTML(method) {
+    return method.map(data => `<li class="historical-list-listItem">On ${data} flights</li>`).join('');
+  },
+  
+  makeMinutesHTML(method) {
+    return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
+  }
 }
 export default domUpdates;
