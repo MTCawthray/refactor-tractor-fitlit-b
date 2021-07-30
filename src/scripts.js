@@ -15,19 +15,6 @@ import domUpdates from './domUpdates';
 
 const currentDateHere = document.getElementById('currentDate');
 
-// const hydrationToday = document.getElementById('hydrationToday');
-const hydrationAverage = document.getElementById('hydrationAverage');
-const hydrationThisWeek = document.getElementById('hydrationThisWeek');
-const hydrationEarlierWeek = document.getElementById('hydrationEarlierWeek');
-
-
-
-const sleepToday = document.getElementById('sleepToday');
-const sleepQualityToday = document.getElementById('sleepQualityToday');
-const avUserSleepQuality = document.getElementById('avUserSleepQuality');
-const sleepThisWeek = document.getElementById('sleepThisWeek');
-const sleepEarlierWeek = document.getElementById('sleepEarlierWeek');
-
 const friendChallengeListToday = document.getElementById('friendChallengeListToday');
 const friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
 const bigWinner = document.getElementById('bigWinner');
@@ -85,8 +72,8 @@ function startApp() {
 
   displayHistoricalWeek(randomHistory)
   addInfoToSidebar(currentUser, userRepo);
-  addHydrationInfo(randomHistory, currentUserId, hydrationRepo);
-  addSleepInfo(randomHistory, currentUserId, sleepRepo);
+  displayHydrationInfo(hydrationRepo, randomHistory, currentUserId);
+  displaySleepInfo(sleepRepo, randomHistory, currentUserId);
   let winnerNow = makeWinnerID(activityRepo, currentUser, currentDate, userRepo);
   addActivityInfo(currentUserId, activityRepo, winnerNow);
   addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, currentUser);
@@ -125,29 +112,12 @@ function makeRandomDate(userStorage, id, dataSet) {
   return sortedArray[Math.floor(Math.random() * sortedArray.length + 1)].date
 }
 
-function addHydrationInfo(randomDate, id, repo) {
-  hydrationToday.insertAdjacentHTML('afterBegin', `<p>You drank</p><p><span class="number">${currentUser.getDateAmount(currentDate, hydrationData, 'numOunces')}</span></p><p>oz water today.</p>`);
-  hydrationAverage.insertAdjacentHTML('afterBegin', `<p>Your average water intake is</p><p><span class="number">${currentUser.calcAvgAllTime(hydrationData, 'numOunces')}</span></p> <p>oz per day.</p>`)
-
-  hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(currentUser.getOverWeekAmount(startDate, hydrationData, 'numOunces')));
-  hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(repo.calculateRandomWeekOunces(randomDate, id, userRepo)));
+function displayHydrationInfo(repo, randomDate, id) {
+  domUpdates.renderHydrationInfo(currentUser, currentDate, hydrationData, startDate, userRepo, repo, randomDate, id)
 }
 
-function makeHydrationHTML(method) {
-  return method.map(drinkData => `<li class="historical-list-listItem">On ${drinkData}oz</li>`).join('');
-}
-
-function addSleepInfo(randomDate, id, repo) {
-  sleepToday.insertAdjacentHTML("afterBegin", `<p>You slept</p> <p><span class="number">${currentUser.getDateAmount(currentDate, sleepData, 'hoursSlept')}</span></p> <p>hours today.</p>`);
-  sleepQualityToday.insertAdjacentHTML("afterBegin", `<p>Your sleep quality was</p> <p><span class="number">${currentUser.getDateAmount(currentDate, sleepData, 'sleepQuality')}</span></p><p>out of 5.</p>`);
-  avUserSleepQuality.insertAdjacentHTML("afterBegin", `<p>The average user's sleep quality is</p> <p><span class="number">${currentUser.calcAvgAllTime(sleepData, 'sleepQuality')}</span></p><p>out of 5.</p>`);
- 
-  sleepThisWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(currentUser.getOverWeekAmount(startDate, sleepData, 'hoursSlept')));
-  sleepEarlierWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(repo.calculateWeekSleep(randomDate, id, userRepo)));
-}
-
-function makeSleepHTML(method) {
-  return method.map(sleepData => `<li class="historical-list-listItem">On ${sleepData} hours</li>`).join('');
+function displaySleepInfo(repo, randomDate, id, ) {
+  domUpdates.renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id)
 }
 
 function addActivityInfo(id, repo, winnerId) {
