@@ -155,7 +155,6 @@ describe('Activity', function() {
       "flightsOfStairs": 9
     }
     ];
-
     user1 = new User({
       id: 1,
       name: "Alex Roth",
@@ -199,6 +198,7 @@ describe('Activity', function() {
     userRepo = new UserRepo(users);
     activity = new Activity(activityData);
   });
+
   it('should take in data', function() {
     expect(activity.activityData[0].userID).to.eql(1);
     expect(activity.activityData[4].date).to.eql("2019/06/15");
@@ -207,18 +207,10 @@ describe('Activity', function() {
     expect(activity.activityData[10].flightsOfStairs).to.eql(24);
   });
 
-})
+
 
 describe('Friend Activity', function() {
-  let activityData;
-  let activity;
-  let user1;
-  let user2;
-  let user3;
-  let user4;
-  let user5;
-  let users;
-  let userRepo;
+  let activityData, activity, user1, user2, user3, user4, user5, users, userRepo;
 
   beforeEach(function() {
     activityData = [{
@@ -327,9 +319,7 @@ describe('Friend Activity', function() {
       "flightsOfStairs": 16
     }
     ];
-
     activity = new Activity(activityData);
-
     user1 = new User({
       id: 1,
       name: "Alex Roth",
@@ -339,7 +329,6 @@ describe('Friend Activity', function() {
       dailyStepGoal: 10000,
       friends: [2, 3, 4]
     });
-
     user2 = new User({
       id: 2,
       name: "Allie McCarthy",
@@ -349,7 +338,6 @@ describe('Friend Activity', function() {
       dailyStepGoal: 9000,
       friends: [1, 3, 4]
     });
-
     user3 = new User({
       id: 3,
       name: "The Rock",
@@ -359,7 +347,6 @@ describe('Friend Activity', function() {
       dailyStepGoal: 60000,
       friends: [1, 2, 4]
     });
-
     user4 = new User({
       id: 4,
       name: "Rainbow Dash",
@@ -455,13 +442,17 @@ describe('Friend Activity', function() {
       'Allie McCarthy: 9552', 'Alex Roth: 7475.5'
     ])
   });
+  
   it('should know the ID of the winning friend', function() {
     expect(activity.getWinnerId(user4, "2019/06/15", userRepo)).to.eql(2)
-  })
+  });
+
   it('should show a 3-day increasing streak for a users step count', function() {
     expect(activity.getStreak(userRepo, 1, 'numSteps')).to.eql(['2019/06/17', '2019/06/18'])
   });
+
   it('should show a 3-day increasing streak for a users minutes of activity', function() {
     expect(activity.getStreak(userRepo, 1, 'minutesActive')).to.eql(['2019/06/18'])
   });
 });
+})
