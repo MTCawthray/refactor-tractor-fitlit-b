@@ -40,6 +40,16 @@ $open: 'Open Sans';
   justify-content: space-between;
 }
 
+@mixin card-history() {
+  text-align: center;
+  font-size: 1em;
+  margin: .5em;
+  font-family: $sans;
+  @include flex-column();
+  justify-content: flex-start;
+  width: 50%;
+}
+
 // code
 
 // body {

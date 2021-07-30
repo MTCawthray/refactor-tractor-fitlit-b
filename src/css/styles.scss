@@ -144,14 +144,8 @@ h1 {
 }
 
 .card-history-hydration {
-  text-align: center;
+  @include card-history();
   background-color: $teal;
-  font-size: 1em;
-  margin: .5em;
-  font-family: $sans;
-  @include flex-column();
-  justify-content: flex-start;
-  width: 50%;
 }
 
 .card-history-sleep {
