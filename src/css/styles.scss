@@ -32,8 +32,7 @@ h1 {
 .body-sidebar-sidebarContainer {
   background-color: $medium-gray;
   border: 1px solid $black;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   align-items: center;
   text-align: center;
   overflow: scroll;
@@ -71,8 +70,7 @@ h1 {
 }
 
 .sidebar-body-friendContainer {
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
 }
 
 .sidebar-friendContainer-listItems {
@@ -83,8 +81,7 @@ h1 {
   width: 100%;
   border: 1px solid $black;
   margin: 0 0 1em;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   overflow: scroll;
 }
 
@@ -107,8 +104,7 @@ h1 {
   width: 100%;
   background-color: $white;
   border: 1px solid $black;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   align-items: center;
   margin: 1%;
   justify-content: space-between;
@@ -137,8 +133,7 @@ h1 {
   font-size: 1.5em;
   margin: .5em;
   font-family: $sans;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: space-between;
   width: 80%;
 }
@@ -150,8 +145,7 @@ h1 {
   font-size: 1.5em;
   margin: .5em;
   font-family: $sans;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: space-between;
   width: 80%;
 }
@@ -163,8 +157,7 @@ h1 {
   font-size: 1.5em;
   margin: .3em;
   font-family: $sans;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: space-between;
   width: 40%;
 }
@@ -175,8 +168,7 @@ h1 {
   font-size: 1em;
   margin: .5em;
   font-family: $sans;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: flex-start;
   width: 50%;
 }
@@ -187,8 +179,7 @@ h1 {
   font-size: 1em;
   margin: .5em;
   font-family: $sans;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: flex-start;
   width: 50%;
 }
@@ -199,8 +190,7 @@ h1 {
   font-size: 1em;
   margin: .5em;
   font-family: $sans;
-  display: flex;
-  flex-direction: column;
+  @include flex-column();
   justify-content: flex-start;
   width: 50%;
   height: 93%;
