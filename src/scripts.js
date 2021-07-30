@@ -13,22 +13,7 @@ import Sleep from './Sleep';
 import UserRepo from './User-repo';
 import domUpdates from './domUpdates';
 
-const currentDateHere = document.getElementById('currentDate');
-
-const friendChallengeListToday = document.getElementById('friendChallengeListToday');
-const friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
-const bigWinner = document.getElementById('bigWinner');
-
-
-
-
-
-
-
-const streakList = document.getElementById('streakList');
-const streakListMinutes = document.getElementById('streakListMinutes')
-
-window.addEventListener('load', returnData)
+window.addEventListener('load', returnData);
 
 let userData, hydrationData, sleepData, activityData, currentUser, userRepo, currentUserId, currentDate, startDate;
 
@@ -44,13 +29,12 @@ function returnData() {
     sleepData = promiseArray[2].sleepData;
     activityData = promiseArray[3].activityData;
     userRepo = new UserRepo(userData);
-    currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)))
+    currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)));
     currentUserId = currentUser.id;
     // can we make a function that returns a random date? 
     currentDate = "2020/01/22";
     // can we make a function that splices the current date and returns it 7 days earlier???
     startDate = "2020/01/15";
-    console.log(currentUser)
   }).then(startApp);
 }
 
@@ -64,15 +48,14 @@ function startApp() {
   let sleepRepo = new Sleep(sleepData);
   let activityRepo = new Activity(activityData);
   let randomHistory = makeRandomDate(userRepo, currentUserId, hydrationData);
-  currentDateHere.innerHTML = `${currentDate}`;
 
-  displayHistoricalWeek(randomHistory)
+  displayHistoricalWeek(randomHistory);
   addInfoToSidebar(currentUser, userRepo);
   displayHydrationInfo(hydrationRepo, randomHistory, currentUserId);
   displaySleepInfo(sleepRepo, randomHistory, currentUserId);
   let winnerNow = makeWinnerID(activityRepo, currentUser, currentDate, userRepo);
   displayActivityInfo(currentUserId, activityRepo, winnerNow);
-  addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, currentUser);
+  displayFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, currentUser);
 }
 
 function displayHistoricalWeek(randomHistory) {
@@ -100,38 +83,26 @@ function displayFriendHTML(user, userStorage) {
 }
 
 function makeWinnerID(activityInfo, user, dateString, userStorage) {
-  return activityInfo.getWinnerId(user, dateString, userStorage)
+  return activityInfo.getWinnerId(user, dateString, userStorage);
 }
 
 function makeRandomDate(userStorage, id, dataSet) {
   let sortedArray = userStorage.makeSortedUserArray(id, dataSet);
-  return sortedArray[Math.floor(Math.random() * sortedArray.length + 1)].date
+  return sortedArray[Math.floor(Math.random() * sortedArray.length + 1)].date;
 }
 
 function displayHydrationInfo(repo, randomDate, id) {
-  domUpdates.renderHydrationInfo(currentUser, currentDate, hydrationData, startDate, userRepo, repo, randomDate, id)
+  domUpdates.renderHydrationInfo(currentUser, currentDate, hydrationData, startDate, userRepo, repo, randomDate, id);
 }
 
 function displaySleepInfo(repo, randomDate, id, ) {
-  domUpdates.renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id)
+  domUpdates.renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id);
 }
 
 function displayActivityInfo(id, repo, winnerId) {
-  domUpdates.renderActivityInfo(currentUser, currentDate, activityData, startDate, userRepo, id, repo, winnerId)
+  domUpdates.renderActivityInfo(currentUser, currentDate, activityData, startDate, userRepo, id, repo, winnerId);
 }
 
-function addFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
-  friendChallengeListToday.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
-  streakList.insertAdjacentHTML("afterBegin", makeStepStreakHTML(activityInfo.getStreak(userStorage, id, 'numSteps')));
-  streakListMinutes.insertAdjacentHTML("afterBegin", makeStepStreakHTML(activityInfo.getStreak(userStorage, id, 'minutesActive')));
-  friendChallengeListHistory.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
-  bigWinner.insertAdjacentHTML('afterBegin', `THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`)
-}
-
-function makeFriendChallengeHTML(method) {
-  return method.map(friendChallengeData => `<li class="historical-list-listItem">Your friend ${friendChallengeData} average steps.</li>`).join('');
-}
-
-function makeStepStreakHTML(method) {
-  return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
+function displayFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
+  domUpdates.renderFriendGameInfo(id, activityInfo, userStorage, dateString, user);
 }
