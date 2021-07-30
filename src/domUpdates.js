@@ -1,20 +1,27 @@
 const domUpdates = {
   renderFirstName(user) {
-    let headerText = document.getElementById('headerText');
+    const headerText = document.getElementById('headerText');
     headerText.innerText = `${user.getFirstName()}'s Activity Tracker`;
   },
 
-  renderInfoCard() {
+  renderInfoCard(name, address, email, strideLength, stepGoal, avStepGoal) {
     const sidebarName = document.getElementById('sidebarName');
     const userAddress = document.getElementById('userAddress');
     const userEmail = document.getElementById('userEmail');
     const userStridelength = document.getElementById('userStridelength');
-    const stepGoal = document.getElementById('stepGoal');
-    const avStepGoalCard = document.getElementById('avStepGoal');
+    const userStepGoal = document.getElementById('stepGoal');
+    const avgStepGoal = document.getElementById('avStepGoal');
+
+    sidebarName.innerText = name;
+    userAddress.innerText = address;
+    userEmail.innerText = email;
+    userStridelength.innerText = `Your stridelength is ${strideLength} meters.`;
+    userStepGoal.innerText = `Your daily step goal is ${stepGoal}.`
+    avgStepGoal.innerText = `The average daily step goal is ${avStepGoal}`;
   },
 
   renderFriendHTML(names) {
-    let friendList = document.getElementById('friendList');
+    const friendList = document.getElementById('friendList');
     friendList.insertAdjacentHTML('afterBegin', names.map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`));
   }
 }
