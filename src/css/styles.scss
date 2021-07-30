@@ -5,17 +5,17 @@
 }
 
 body {
-  font-family: $open;
-  margin: 0;
   background-color: $dark-gray;
   height: auto;
+  font-family: $open;
+  margin: 0;
 }
 
 h1 {
-  text-align: center;
   color: $white;
   height: 80px;
   padding-top: 10px;
+  text-align: center;
 }
 
 .main {
@@ -25,17 +25,17 @@ h1 {
 
 .main-sidebar-body {
   @include flex-row();
-  width: 25%;
   height: 100%;
+  width: 25%;
 }
 
 .body-sidebar-sidebarContainer {
-  background-color: $medium-gray;
-  border: 1px solid $black;
   @include flex-column();
+  @include small-black-border();
   align-items: center;
-  text-align: center;
+  background-color: $medium-gray;
   overflow: scroll;
+  text-align: center;
 }
 
 .sidebar-header-name {
@@ -44,17 +44,17 @@ h1 {
 
 .sidebar-header-userInfo {
   font-family: $sans;
-  font-weight: bold;
   font-size: 1.2em;
+  font-weight: bold;
   margin: .5em .5em .5em .5em;
   width: inherit;
 }
 
 .sidebar-header-line {
-  color: $white;
   @include small-black-border();
-  margin: 1em 1em 0 1em;
+  color: $white;
   height: 0;
+  margin: 1em 1em 0 1em;
   width: 80%;
 }
 
@@ -64,9 +64,9 @@ h1 {
   border-style: solid;
   border-width: 1px;
   height: 200px;
-  width: 200px;
-  margin: 4px 2px 2px 2px;
   justify-content: center;
+  margin: 4px 2px 2px 2px;
+  width: 200px;
 }
 
 .sidebar-body-friendContainer {
@@ -78,11 +78,11 @@ h1 {
 }
 
 .body-main-infoContainter {
-  width: 100%;
-  border: 1px solid $black;
-  margin: 0 0 1em;
   @include flex-column();
+  @include small-black-border();
+  margin: 0 0 1em;
   overflow: scroll;
+  width: 100%;
 }
 
 .main-column-hydration {
@@ -101,29 +101,29 @@ h1 {
 }
 
 .infoContainer-cardContainer-card-horizontal {
-  width: 100%;
-  background-color: $white;
-  @include small-black-border();
   @include flex-column();
+  @include small-black-border();
   align-items: center;
-  margin: 1%;
+  background-color: $white;
   justify-content: space-between;
+  margin: 1%;
+  width: 100%;
 }
 
 .horizontalCard-activity-container {
   @include flex-row();
   justify-content: space-around;
-  width: 100%;
   overflow: scroll;
+  width: 100%;
 }
 
 .infoContainer-cardContainer-card-vertical {
-  width: 100%;
-  background-color: $white;
-  @include small-black-border();
   @include flex-row();
+  @include small-black-border();
+  background-color: $white;
   margin: 1%;
   overflow: scroll;
+  width: 100%;
 }
 
 .card-today-hydration {
@@ -161,31 +161,31 @@ h1 {
 }
 
 .number {
-  font-size: 2em;
-  font-weight: bolder;
   color: $dark-gray;
   font-kerning: normal;
+  font-size: 2em;
+  font-weight: bolder;
 }
 
 .historicalWeek,
 .thisWeek {
-  text-align: center;
+  color: $black;
   font-size: 1em;
   font-weight: bolder;
   margin: .5em;
-  color: $black;
+  text-align: center;
 }
 
 .card-vertical-list {
-  list-style-type: none;
-  font-weight: lighter;
-  font-style: italic;
-  padding-left: 0;
   font-size: 1em;
+  font-style: italic;
+  font-weight: lighter;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .historical-list-listItem {
-  padding: .3em;
-  font-weight: bold;
   font-family: $sans;
+  font-weight: bold;
+  padding: .3em;
 }
