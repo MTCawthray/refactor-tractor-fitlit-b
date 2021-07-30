@@ -19,16 +19,12 @@ const friendChallengeListToday = document.getElementById('friendChallengeListTod
 const friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
 const bigWinner = document.getElementById('bigWinner');
 
-const userStepsToday = document.getElementById('userStepsToday');
-const avgStepsToday = document.getElementById('avgStepsToday');
-const userStairsToday = document.getElementById('userStairsToday');
-const avgStairsToday = document.getElementById('avgStairsToday');
-const userMinutesToday = document.getElementById('userMinutesToday');
-const avgMinutesToday = document.getElementById('avgMinutesToday');
-const userStepsThisWeek = document.getElementById('userStepsThisWeek');
-const userStairsThisWeek = document.getElementById('userStairsThisWeek');
-const userMinutesThisWeek = document.getElementById('userMinutesThisWeek');
-const bestUserSteps = document.getElementById('bestUserSteps');
+
+
+
+
+
+
 const streakList = document.getElementById('streakList');
 const streakListMinutes = document.getElementById('streakListMinutes')
 
@@ -75,7 +71,7 @@ function startApp() {
   displayHydrationInfo(hydrationRepo, randomHistory, currentUserId);
   displaySleepInfo(sleepRepo, randomHistory, currentUserId);
   let winnerNow = makeWinnerID(activityRepo, currentUser, currentDate, userRepo);
-  addActivityInfo(currentUserId, activityRepo, winnerNow);
+  displayActivityInfo(currentUserId, activityRepo, winnerNow);
   addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, currentUser);
 }
 
@@ -120,29 +116,8 @@ function displaySleepInfo(repo, randomDate, id, ) {
   domUpdates.renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id)
 }
 
-function addActivityInfo(id, repo, winnerId) {
-  userStairsToday.insertAdjacentHTML("afterBegin", `<p>Stair Count:</p><p>You</><p><span class="number">${currentUser.getDateAmount(currentDate, activityData, 'flightsOfStairs')}</span></p>`)
-  avgStairsToday.insertAdjacentHTML("afterBegin", `<p>Stair Count: </p><p>All Users</p><p><span class="number">${userRepo.getAllUsersAvgByDate(currentDate, 'flightsOfStairs', activityData)}</span></p>`)
-  userStepsToday.insertAdjacentHTML("afterBegin", `<p>Step Count:</p><p>You</p><p><span class="number">${currentUser.getDateAmount(currentDate, activityData, 'numSteps')}</span></p>`)
-  avgStepsToday.insertAdjacentHTML("afterBegin", `<p>Step Count:</p><p>All Users</p><p><span class="number">${userRepo.getAllUsersAvgByDate(currentDate, 'numSteps', activityData)}</span></p>`)
-  userMinutesToday.insertAdjacentHTML("afterBegin", `<p>Active Minutes:</p><p>You</p><p><span class="number">${currentUser.getDateAmount(currentDate, activityData, 'minutesActive')}</span></p>`)
-  avgMinutesToday.insertAdjacentHTML("afterBegin", `<p>Active Minutes:</p><p>All Users</p><p><span class="number">${userRepo.getAllUsersAvgByDate(currentDate, 'minutesActive', activityData)}</span></p>`)
-  userStepsThisWeek.insertAdjacentHTML("afterBegin", makeStepsHTML(currentUser.getOverWeekAmount(startDate, activityData, 'numSteps')));
-  userStairsThisWeek.insertAdjacentHTML("afterBegin", makeStairsHTML(currentUser.getOverWeekAmount(startDate, activityData, 'flightsOfStairs')));
-  userMinutesThisWeek.insertAdjacentHTML("afterBegin", makeMinutesHTML(currentUser.getOverWeekAmount(startDate, activityData, 'minutesActive')));
-  bestUserSteps.insertAdjacentHTML("afterBegin", makeStepsHTML(repo.userDataForWeek(winnerId, currentDate, userRepo, "numSteps")));
-}
-
-function makeStepsHTML(method) {
-  return method.map(activityData => `<li class="historical-list-listItem">On ${activityData} steps</li>`).join('');
-}
-
-function makeStairsHTML(method) {
-  return method.map(data => `<li class="historical-list-listItem">On ${data} flights</li>`).join('');
-}
-
-function makeMinutesHTML(method) {
-  return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
+function displayActivityInfo(id, repo, winnerId) {
+  domUpdates.renderActivityInfo(currentUser, currentDate, activityData, startDate, userRepo, id, repo, winnerId)
 }
 
 function addFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
