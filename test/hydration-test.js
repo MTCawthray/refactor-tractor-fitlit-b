@@ -3,10 +3,10 @@ import Hydration from '../src/Hydration';
 import UserRepo from '../src/User-repo';
 import User from '../src/User';
 
-describe('Hydration', function() {
+describe('Hydration', () => {
   let hydration, hydrationData, user3, user4, users, userRepo;
   
-  beforeEach(function() {
+  beforeEach( () => {
     user3 = new User({
       id: 3,
       name: "The Rock",
@@ -129,7 +129,7 @@ describe('Hydration', function() {
     expect(hydration).to.be.an.instanceOf(Hydration);
   });
 
-  it('should take in a list of data', function() {
+  it('should take in a list of data', () => {
     expect(hydration.hydrationData[0].userID).to.equal(1);
     expect(hydration.hydrationData[2].numOunces).to.equal(1);
     expect(hydration.hydrationData[4].date).to.equal('2018/10/23');
@@ -137,14 +137,14 @@ describe('Hydration', function() {
   });
 
   describe('calculateFirstWeekOunces', () => {
-    it('should find water intake by day for first week', function() {
+    it('should find water intake by day for first week', () => {
       expect(hydration.calculateFirstWeekOunces(userRepo, 4)[0]).to.eql('2019/09/20: 40');
       expect(hydration.calculateFirstWeekOunces(userRepo, 4)[6]).to.eql('2019/04/15: 36');
     });
   });
 
   describe('calculateRandomWeekOunces', () => {
-    it('should find ounces drank for that days week', function() {
+    it('should find ounces drank for that days week', () => {
       expect(hydration.calculateRandomWeekOunces('2019/09/18', 4, userRepo)[0]).to.eql('2019/09/18: 40');
       expect(hydration.calculateRandomWeekOunces('2018/02/01', 4, userRepo)[6]).to.eql(undefined);
     });
