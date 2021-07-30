@@ -13,26 +13,25 @@ import Sleep from './Sleep';
 import UserRepo from './User-repo';
 import domUpdates from './domUpdates';
 
-const sidebarName = document.getElementById('sidebarName');
-const stepGoalCard = document.getElementById('stepGoalCard');
-const userAddress = document.getElementById('userAddress');
-const userEmail = document.getElementById('userEmail');
-const userStridelength = document.getElementById('userStridelength');
 const currentDateHere = document.getElementById('currentDate');
 
-const hydrationToday = document.getElementById('hydrationToday');
+// const hydrationToday = document.getElementById('hydrationToday');
 const hydrationAverage = document.getElementById('hydrationAverage');
 const hydrationThisWeek = document.getElementById('hydrationThisWeek');
 const hydrationEarlierWeek = document.getElementById('hydrationEarlierWeek');
-const historicalWeek = document.querySelectorAll('.historicalWeek');
+
+
+
 const sleepToday = document.getElementById('sleepToday');
 const sleepQualityToday = document.getElementById('sleepQualityToday');
 const avUserSleepQuality = document.getElementById('avUserSleepQuality');
 const sleepThisWeek = document.getElementById('sleepThisWeek');
 const sleepEarlierWeek = document.getElementById('sleepEarlierWeek');
+
 const friendChallengeListToday = document.getElementById('friendChallengeListToday');
 const friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
 const bigWinner = document.getElementById('bigWinner');
+
 const userStepsToday = document.getElementById('userStepsToday');
 const avgStepsToday = document.getElementById('avgStepsToday');
 const userStairsToday = document.getElementById('userStairsToday');
@@ -83,7 +82,8 @@ function startApp() {
   let activityRepo = new Activity(activityData);
   let randomHistory = makeRandomDate(userRepo, currentUserId, hydrationData);
   currentDateHere.innerHTML = `${currentDate}`;
-  historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
+
+  displayHistoricalWeek(randomHistory)
   addInfoToSidebar(currentUser, userRepo);
   addHydrationInfo(randomHistory, currentUserId, hydrationRepo);
   addSleepInfo(randomHistory, currentUserId, sleepRepo);
@@ -92,10 +92,12 @@ function startApp() {
   addFriendGameInfo(currentUserId, activityRepo, userRepo, currentDate, currentUser);
 }
 
+function displayHistoricalWeek(randomHistory) {
+  domUpdates.renderHistoricalWeek(randomHistory);
+}
 
 function addInfoToSidebar(user, userStorage) {
   const avStepGoal = userStorage.calculateAverageStepGoal();
-  
   displayFirstName(user);
   displayInfoCard(user.name, user.address, user.email, user.strideLength, user.dailyStepGoal, avStepGoal);
   displayFriendHTML(user, userStorage);
@@ -121,7 +123,6 @@ function makeWinnerID(activityInfo, user, dateString, userStorage) {
 function makeRandomDate(userStorage, id, dataSet) {
   let sortedArray = userStorage.makeSortedUserArray(id, dataSet);
   return sortedArray[Math.floor(Math.random() * sortedArray.length + 1)].date
-
 }
 
 function addHydrationInfo(randomDate, id, repo) {
