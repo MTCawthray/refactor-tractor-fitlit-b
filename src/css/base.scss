@@ -14,7 +14,12 @@ $yellow: #DFE166;
 $sans: sans-serif;
 $open: 'Open Sans';
 
+// layout
 
+@mixin flex-row() {
+  display: flex;
+  flex-direction: row;
+}
 
 
 // code

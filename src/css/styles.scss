@@ -19,14 +19,12 @@ h1 {
 }
 
 .main {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   height: 1500px;
 }
 
 .main-sidebar-body {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   width: 25%;
   height: 100%;
 }
@@ -91,20 +89,17 @@ h1 {
 }
 
 .main-column-hydration {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   height: 25%
 }
 
 .main-column-activity {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   height: 50%
 }
 
 .main-column-sleep {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   height: 35%
 }
 
@@ -120,8 +115,7 @@ h1 {
 }
 
 .horizontalCard-activity-container {
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   justify-content: space-around;
   width: 100%;
   overflow: scroll;
@@ -131,8 +125,7 @@ h1 {
   width: 100%;
   background-color: $white;
   border: 1px solid $black;
-  display: flex;
-  flex-direction: row;
+  @include flex-row();
   margin: 1%;
   overflow: scroll;
 }
