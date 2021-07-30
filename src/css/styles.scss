@@ -127,38 +127,19 @@ h1 {
 }
 
 .card-today-hydration {
-  text-align: center;
+  @include card-today();
   background-color: $teal;
-  height: auto;
-  font-size: 1.5em;
-  margin: .5em;
-  font-family: $sans;
-  @include flex-column();
-  justify-content: space-between;
   width: 80%;
 }
 
 .card-today-sleep {
-  text-align: center;
+  @include card-today();
   background-color: $pink;
-  height: auto;
-  font-size: 1.5em;
-  margin: .5em;
-  font-family: $sans;
-  @include flex-column();
-  justify-content: space-between;
   width: 80%;
 }
 
 .card-today-activity {
-  text-align: center;
-  background-color: $yellow;
-  height: auto;
-  font-size: 1.5em;
-  margin: .3em;
-  font-family: $sans;
-  @include flex-column();
-  justify-content: space-between;
+  @include card-today();
   width: 40%;
 }
 

@@ -30,6 +30,16 @@ $open: 'Open Sans';
   border: 1px solid $black;
 }
 
+@mixin card-today() {
+  text-align: center;
+  font-size: 1.5em;
+  margin: .5em;
+  font-family: $sans;
+  height: auto;
+  @include flex-column();
+  justify-content: space-between;
+}
+
 // code
 
 // body {
