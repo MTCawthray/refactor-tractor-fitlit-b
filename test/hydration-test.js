@@ -6,7 +6,6 @@ import User from '../src/User';
 describe('Hydration', function() {
   let hydration, hydrationData, user3, user4, users, userRepo;
   
-
   beforeEach(function() {
     user3 = new User({
       id: 3,
@@ -122,6 +121,14 @@ describe('Hydration', function() {
     hydration = new Hydration(hydrationData);
   });
 
+  it('should be a function', () => {
+    expect(Hydration).to.be.a('function');
+  });
+
+  it('should be an instance of Hydration class', () => {
+    expect(hydration).to.be.an.instanceOf(Hydration);
+  });
+
   it('should take in a list of data', function() {
     expect(hydration.hydrationData[0].userID).to.equal(1);
     expect(hydration.hydrationData[2].numOunces).to.equal(1);
@@ -129,17 +136,17 @@ describe('Hydration', function() {
     expect(hydration.hydrationData[1].id).to.equal(undefined);
   });
 
-  it('should find water intake by day for first week', function() {
-    expect(hydration.calculateFirstWeekOunces(userRepo, 4)[0]).to.eql('2019/09/20: 40');
-    expect(hydration.calculateFirstWeekOunces(userRepo, 4)[6]).to.eql('2019/04/15: 36');
+  describe('calculateFirstWeekOunces', () => {
+    it('should find water intake by day for first week', function() {
+      expect(hydration.calculateFirstWeekOunces(userRepo, 4)[0]).to.eql('2019/09/20: 40');
+      expect(hydration.calculateFirstWeekOunces(userRepo, 4)[6]).to.eql('2019/04/15: 36');
+    });
   });
 
-  it('should find ounces drank for that days week', function() {
-    console.log(hydration.calculateRandomWeekOunces('2018/02/01', 4, userRepo)[6]);
-    expect(hydration.calculateRandomWeekOunces('2019/09/18', 4, userRepo)[0]).to.eql('2019/09/18: 40');
-    expect(hydration.calculateRandomWeekOunces('2018/02/01', 4, userRepo)[6]).to.eql(undefined);
+  describe('calculateRandomWeekOunces', () => {
+    it('should find ounces drank for that days week', function() {
+      expect(hydration.calculateRandomWeekOunces('2019/09/18', 4, userRepo)[0]).to.eql('2019/09/18: 40');
+      expect(hydration.calculateRandomWeekOunces('2018/02/01', 4, userRepo)[6]).to.eql(undefined);
+    });
   })
-  //day of hydration should not include user 2 or user 1 on August 22
-  //week of hydration should not include user 4 not during the week
-
 });
