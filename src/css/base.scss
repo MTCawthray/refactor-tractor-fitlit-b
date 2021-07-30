@@ -22,9 +22,13 @@ $open: 'Open Sans';
 }
 
 @mixin flex-column() {
-  
+  display: flex;
+  flex-direction: column;
 }
 
+@mixin small-black-border() {
+  border: 1px solid $black;
+}
 
 // code
 
