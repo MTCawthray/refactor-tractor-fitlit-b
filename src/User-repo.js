@@ -37,7 +37,7 @@ class UserRepo {
   // NEW USES OF HELPER FUNCTIONS
 
   calculateAverageStepGoal() {
-    this.calcAvgAllUsers('dailyStepGoal');
+    return this.calcAvgAllUsers('dailyStepGoal');
   }
 
   /////////////////////////////////////////////
