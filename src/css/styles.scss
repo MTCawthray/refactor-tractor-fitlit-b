@@ -5,7 +5,7 @@
 body {
   font-family: 'Open Sans';
   margin: 0;
-  background-color: #4d4e4f;
+  background-color: $dark-gray;
   height: auto;
 }
 
@@ -215,7 +215,7 @@ h1 {
 .number {
   font-size: 2em;
   font-weight: bolder;
-  color: #4d4e4f;
+  color: $dark-gray;
   font-kerning: normal;
 }
 
