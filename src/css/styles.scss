@@ -1,3 +1,5 @@
+@import 'base';
+
 * {
   margin: 0;
 }
@@ -137,7 +139,7 @@ h1 {
 
 .card-today-hydration {
   text-align: center;
-  background-color: #5BC8AC;
+  background-color: $teal;
   height: auto;
   font-size: 1.5em;
   margin: .5em;
@@ -176,7 +178,7 @@ h1 {
 
 .card-history-hydration {
   text-align: center;
-  background-color: #5BC8AC;
+  background-color: $teal;
   font-size: 1em;
   margin: .5em;
   font-family: sans-serif;
