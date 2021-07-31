@@ -4,10 +4,10 @@ import Sleep from '../src/Sleep';
 import UserRepo from '../src/User-repo';
 import User from '../src/User';
 
-describe('Sleep', function() {
+describe('Sleep', () => {
   let sleepData, sleep, user1, user2, user3, user4, user5, users, userRepo;
 
-  beforeEach(function() {
+  beforeEach(() => {
     sleepData = sampleSleepData;
     user1 = new User({
       id: 1,
@@ -68,7 +68,7 @@ describe('Sleep', function() {
     sleep = new Sleep(sleepData);
   });
 
-  it('should take in a list of data', function() {
+  it('should take in a list of data', () => {
     console.log(sleep.sleepData);
     expect(sleep.sleepData[1].userID).to.equal(2);
     expect(sleep.sleepData[3].hoursSlept).to.equal(4.1);
@@ -76,19 +76,19 @@ describe('Sleep', function() {
     expect(sleep.sleepData[7].date).to.equal('2019/06/17');
   });
 
-  it('should return person with best quality sleep for the week', function() {
+  it('should return person with best quality sleep for the week', () => {
     expect(sleep.determineSleepWinnerForWeek("2019/06/21", userRepo)).to.eql(["Richmond"]);
   });
 
-  it('should return all qualifying users if best quality sleep is a tie', function() {
+  it('should return all qualifying users if best quality sleep is a tie', () => {
     expect(sleep.determineSleepWinnerForWeek("2019/06/21", userRepo)).to.eql(["Richmond"]);
   });
 
-  it('should return person with longest sleep for the day', function() {
+  it('should return person with longest sleep for the day', () => {
     expect(sleep.determineSleepHoursWinnerForDay('2019/06/21', userRepo)).to.eql(["Richmond"]);
   });
 
-  it('should return all qualifying users if longest sleep is a tie', function() {
+  it('should return all qualifying users if longest sleep is a tie', () => {
     expect(sleep.determineSleepHoursWinnerForDay('2019/06/21', userRepo)).to.eql(["Richmond"]);
   });
 });
