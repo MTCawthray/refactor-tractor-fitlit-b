@@ -12,7 +12,7 @@
   <h1 id="headerText">Activity Tracker</h1>
     <section class='infoContainer-cardContainer-card-horizontal' id='hydration-form-card'>
       <form class='hydration-form form' action='index.html' method='post'>
-        <h2>Submit Todays Hydration Data</h2>
+        <h2 id='hydrationFormHeader'>Submit Todays Hydration Data</h2>
         <label for='numOunces'>Number of Ounces</label>
         <input type='number' name='numOunces' id='numOunces' value='0' step='1' min='0' max='100'>
         <button type='button' name='button' class='new-data-submit-button' id='hydrationSubmitButton'>Submit</button>
@@ -20,7 +20,7 @@
     </section>
     <section class='infoContainer-cardContainer-card-horizontal' id='activity-form-card'>
       <form class='activity-form form' action='index.html' method='post'>
-        <h2>Submit Todays Activity Data</h2>
+        <h2 id='activityFormHeader'>Submit Todays Activity Data</h2>
         <label for='numSteps'>Number of Steps</label>
         <input type='number' name='numSteps' id='numSteps' value='0' step='1' min='0' max='15000'>
         <label for='minutesActive'>Minutes Active</label>
@@ -32,7 +32,7 @@
     </section>
     <section class="infoContainer-cardContainer-card-horizontal" id='sleep-form-card'>
       <form class='sleep-form form' action='index.html' method='post'>
-        <h2>Submit Last Nights Sleep Data</h2>
+        <h2 id='sleepFormHeader'>Submit Last Nights Sleep Data</h2>
         <label for='hoursSlept'>Hours Slept</label>
         <input type='number' name='hoursSlept' id='hoursSlept' value='0' step='0.1' min='0' max='24'>
         <label for='sleepQuality'>Sleep Quality (on a scale of 0 to 5)</label>

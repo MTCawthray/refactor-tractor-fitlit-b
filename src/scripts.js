@@ -4,7 +4,7 @@ import './css/styles.scss';
 import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 
-import { fetchData, postHydrationData } from './apiCalls';
+import { fetchData, postHydrationData, postActivityData, postSleepData } from './apiCalls';
 
 import User from './User';
 import Activity from './Activity';
@@ -15,10 +15,24 @@ import domUpdates from './domUpdates';
 
 const hydrationButton = document.getElementById('hydrationSubmitButton');
 const hydrationInput = document.getElementById('numOunces');
+const hydrationHeader = document.getElementById('hydrationFormHeader');
+
+const activityButton = document.getElementById('activitySubmitButton');
+const stepsInput = document.getElementById('numSteps');
+const minInput = document.getElementById('minutesActive');
+const stairsInput = document.getElementById('flightsOfStairs');
+const activityHeader = document.getElementById('activityFormHeader');
+
+const sleepButton = document.getElementById('sleepSubmitButton');
+const hrInput = document.getElementById('hoursSlept');
+const qualInput = document.getElementById('sleepQuality');
+const sleepHeader = document.getElementById('sleepFormHeader');
 
 
 window.addEventListener('load', returnData);
-hydrationButton.addEventListener('click', postHydrationInput)
+hydrationButton.addEventListener('click', postHydrationInputs)
+activityButton.addEventListener('click', postActivityInputs)
+sleepButton.addEventListener('click', postSleepInputs)
 
 let userData, hydrationData, sleepData, activityData, currentUser, userRepo, currentUserId, currentDate, startDate;
 
@@ -112,7 +126,7 @@ function displayFriendGameInfo(id, activityInfo, userStorage, dateString, user) 
   domUpdates.renderFriendGameInfo(id, activityInfo, userStorage, dateString, user);
 }
 
-function postHydrationInput() {
+function postHydrationInputs() {
   postHydrationData(currentUserId, currentDate, hydrationInput.value)
     .then((response) => {
       if (!response.ok) {
@@ -121,6 +135,43 @@ function postHydrationInput() {
         // renderSuccessfulPost("hydration");
         console.log("success")
         console.log(currentUserId)
+        hydrationHeader.innerHTML = "Great job! You have submitted your hydration data!"
+      }
+    })
+    .catch(error => {
+      // showPostMessage('fail', error, 'hydration data')
+      console.log(error)
+    })
+}
+
+function postActivityInputs() {
+  postActivityData(currentUserId, currentDate, stepsInput.value, minInput.value, stairsInput.value)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      } else {
+        // renderSuccessfulPost("hydration");
+        console.log("success")
+        console.log(currentUserId)
+        activityHeader.innerHTML = "Great job! You have submitted your activity data!"
+      }
+    })
+    .catch(error => {
+      // showPostMessage('fail', error, 'hydration data')
+      console.log(error)
+    })
+}
+
+function postSleepInputs() {
+  postSleepData(currentUserId, currentDate, hrInput.value, qualInput.value)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      } else {
+        // renderSuccessfulPost("hydration");
+        console.log("success")
+        console.log(currentUserId)
+        sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
       }
     })
     .catch(error => {
