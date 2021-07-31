@@ -27,7 +27,11 @@ const domUpdates = {
 
   renderFriendHTML(names) {
     const friendList = document.getElementById('friendList');
-    friendList.insertAdjacentHTML('afterBegin', names.map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`));
+    // friendList.insertAdjacentHTML('afterBegin', names.map(friendName => `<li class='historical-list-listItem'>${friendName}</li>`));
+    friendList.innerHTML = '';
+    names.forEach(name => {
+      friendList.innerHTML += `<li class='historical-list-listItem'>${name}</li>`;
+    })
   },
 
   renderHydrationInfo(currentUser, currentDate, hydrationData, startDate, userRepo, repo, randomDate, id) {
