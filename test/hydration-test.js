@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import Hydration from '../src/Hydration';
 import UserRepo from '../src/User-repo';
 import User from '../src/User';
+import sampleHydrationData from '../src/data/sample-hydration.js';
 
 describe('Hydration', () => {
   let hydration, hydrationData, user3, user4, users, userRepo;
@@ -27,97 +28,7 @@ describe('Hydration', () => {
     });
     users = [user3, user4];
     userRepo = new UserRepo(users);
-    hydrationData = [{
-      "userID": 1,
-      "date": "2019/06/15",
-      "numOunces": 37
-    },
-    {
-      "userID": 2,
-      "date": "2019/06/15",
-      "numOunces": 38
-    },
-    {
-      "userID": 3,
-      "date": "2019/05/09",
-      "numOunces": 1
-    },
-    {
-      "userID": 4,
-      "date": "2019/04/15",
-      "numOunces": 36
-    },
-    {
-      "userID": 2,
-      "date": "2018/10/23",
-      "numOunces": 34
-    },
-    {
-      "userID": 1,
-      "date": "2018/06/16",
-      "numOunces": 39
-    },
-    {
-      "userID": 3,
-      "date": "2018/03/30",
-      "numOunces": 2
-    },
-    {
-      "userID": 4,
-      "date": "2018/02/01",
-      "numOunces": 28
-    },
-    {
-      "userID": 1,
-      "date": "2016/08/22",
-      "numOunces": 30
-    },
-    {
-      "userID": 3,
-      "date": "2016/05/14",
-      "numOunces": 3
-    },
-    {
-      "userID": 2,
-      "date": "2016/04/27",
-      "numOunces": 40
-    },
-    {
-      "userID": 4,
-      "date": "2019/03/15",
-      "numOunces": 35
-    },
-    {
-      "userID": 4,
-      "date": "2019/09/20",
-      "numOunces": 40
-    },
-    {
-      "userID": 4,
-      "date": "2019/09/19",
-      "numOunces": 30
-    },
-    {
-      "userID": 4,
-      "date": "2019/09/18",
-      "numOunces": 40
-    },
-    {
-      "userID": 4,
-      "date": "2019/09/17",
-      "numOunces": 40
-    },
-    {
-      "userID": 4,
-      "date": "2019/09/16",
-      "numOunces": 30
-    },
-    {
-      "userID": 4,
-      "date": "2019/09/15",
-      "numOunces": 30
-    },
-    ];
+    hydrationData = sampleHydrationData;
     hydration = new Hydration(hydrationData);
   });
 
@@ -131,21 +42,21 @@ describe('Hydration', () => {
 
   it('should take in a list of data', () => {
     expect(hydration.hydrationData[0].userID).to.equal(1);
-    expect(hydration.hydrationData[2].numOunces).to.equal(1);
-    expect(hydration.hydrationData[4].date).to.equal('2018/10/23');
+    expect(hydration.hydrationData[2].numOunces).to.equal(47);
+    expect(hydration.hydrationData[4].date).to.equal('2019/06/16');
     expect(hydration.hydrationData[1].id).to.equal(undefined);
   });
 
   describe('calculateFirstWeekOunces', () => {
     it('should find water intake by day for first week', () => {
-      expect(hydration.calculateFirstWeekOunces(userRepo, 4)[0]).to.eql('2019/09/20: 40');
-      expect(hydration.calculateFirstWeekOunces(userRepo, 4)[6]).to.eql('2019/04/15: 36');
+      expect(hydration.calculateFirstWeekOunces(userRepo, 1)[0]).to.eql('2019/06/28: 57');
+      expect(hydration.calculateFirstWeekOunces(userRepo, 1)[6]).to.eql('2019/06/22: 43');
     });
   });
 
   describe('calculateRandomWeekOunces', () => {
     it('should find ounces drank for that days week', () => {
-      expect(hydration.calculateRandomWeekOunces('2019/09/18', 4, userRepo)[0]).to.eql('2019/09/18: 40');
+      expect(hydration.calculateRandomWeekOunces('2019/06/18', 2, userRepo)[0]).to.eql('2019/06/18: 70');
       expect(hydration.calculateRandomWeekOunces('2018/02/01', 4, userRepo)[6]).to.eql(undefined);
     });
   })
