@@ -4,7 +4,7 @@ import './css/styles.scss';
 import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 
-import { fetchData } from './apiCalls';
+import { fetchData, postHydrationData } from './apiCalls';
 
 import User from './User';
 import Activity from './Activity';
@@ -13,7 +13,12 @@ import Sleep from './Sleep';
 import UserRepo from './User-repo';
 import domUpdates from './domUpdates';
 
+const hydrationButton = document.getElementById('hydrationSubmitButton');
+const hydrationInput = document.getElementById('numOunces');
+
+
 window.addEventListener('load', returnData);
+hydrationButton.addEventListener('click', postHydrationInput)
 
 let userData, hydrationData, sleepData, activityData, currentUser, userRepo, currentUserId, currentDate, startDate;
 
@@ -106,3 +111,21 @@ function displayActivityInfo(id, repo, winnerId) {
 function displayFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
   domUpdates.renderFriendGameInfo(id, activityInfo, userStorage, dateString, user);
 }
+
+function postHydrationInput() {
+  postHydrationData(currentUserId, currentDate, hydrationInput.value)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      } else {
+        // renderSuccessfulPost("hydration");
+        console.log("success")
+        console.log(currentUserId)
+      }
+    })
+    .catch(error => {
+      // showPostMessage('fail', error, 'hydration data')
+      console.log(error)
+    })
+}
+

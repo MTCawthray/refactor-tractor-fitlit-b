@@ -46,6 +46,7 @@ class Sleep {
       return userRepo.getDataFromID(parseInt(sleepNumber)).name;
     });
   }
+  
 }
 
 
