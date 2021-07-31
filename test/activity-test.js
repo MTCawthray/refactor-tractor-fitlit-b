@@ -65,7 +65,11 @@ describe('Activity', function() {
     expect(activity.activityData[10].flightsOfStairs).to.eql(5);
   });
 
-describe('Friend Activity', function() {
+describe('getFriendActivity()', function() {
+
+  it('should return an array', () => {
+    expect(activity.getFriendsActivity(user3, userRepo)).to.be.an('array');
+  });
  
   it('should get a users friend lists activity', function() {
     // console.log(activity.getFriendsActivity(user4, userRepo));
@@ -212,15 +216,24 @@ describe('Friend Activity', function() {
       }
     ]);
   });
+});
+
+describe('getFriendsAverageStepsForWeek()', function() {
+  it('should return an array', () => {
+    expect(activity.getFriendsAverageStepsForWeek(user2, "2019/06/23", userRepo)).to.be.an('array');
+  });
 
   it('should get a users ranked friendslist activity for a chosen week', function() {
-    expect(activity.getFriendsAverageStepsForWeek(user4, "2019/06/15", userRepo)).to.eql([{
-      '2': 4294
-    },
-    {
-      '1': 3577
-    }
-    ]);
+    expect(activity.getFriendsAverageStepsForWeek(user4, "2019/06/15", userRepo)).to.eql([{'2': 4294}, {'1': 3577}]);
+
+    expect(activity.getFriendsAverageStepsForWeek(user4, "2019/06/23", userRepo)).to.eql([{'1': 9908.625}, {'2': 7314.125}]);
+  });
+
+});
+
+describe('showChallengeListAndWinner()', function() {
+  it('should be an array', () => {
+    expect(activity.showChallengeListAndWinner(user2, "2019/06/23", userRepo)).to.be.an('array');
   });
 
   it('should get a users ranked friendslist activity for a chosen week with names', function() {
@@ -228,17 +241,27 @@ describe('Friend Activity', function() {
       'Allie McCarthy: 4294', 'Alex Roth: 3577'
     ])
   });
-  
-  it('should know the ID of the winning friend', function() {
-    expect(activity.getWinnerId(user4, "2019/06/15", userRepo)).to.eql(2)
+});
+
+describe('getWinnerId', function() {
+  it('should return a number', () => {
+    expect(activity.getWinnerId(user2, '2019/06/23', userRepo)).to.be.a('number')
   });
 
+  it('should know the ID of the winning friend', function() {
+    expect(activity.getWinnerId(user2, '2019/06/23', userRepo)).to.eql(1)
+    expect(activity.getWinnerId(user4, "2019/06/15", userRepo)).to.eql(2)
+  });
+});
+
+describe('getStreak()', function() {
   it('should show a 3-day increasing streak for a users step count', function() {
-    expect(activity.getStreak(userRepo, 1, 'numSteps')).to.eql(['2019/06/17', '2019/06/18'])
+    expect(activity.getStreak(userRepo, 1, 'numSteps')).to.eql(['2019/06/17', '2019/06/20', '2019/06/23'])
   });
 
   it('should show a 3-day increasing streak for a users minutes of activity', function() {
-    expect(activity.getStreak(userRepo, 1, 'minutesActive')).to.eql(['2019/06/18'])
+    expect(activity.getStreak(userRepo, 2, 'minutesActive')).to.eql(['2019/06/19'])
   });
 });
 })
+
