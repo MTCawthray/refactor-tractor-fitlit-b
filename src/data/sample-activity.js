@@ -281,4 +281,4 @@ const sampleActivityData = [
   },
 ];
 
-module.exports = sampleActivityData;
+export default sampleActivityData;

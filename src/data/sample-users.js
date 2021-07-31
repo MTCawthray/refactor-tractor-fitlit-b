@@ -37,7 +37,7 @@ const sampleUserData = [{
       42,
       33
   ]
-}
+},
 ];
 
 module.exports = sampleUserData;
