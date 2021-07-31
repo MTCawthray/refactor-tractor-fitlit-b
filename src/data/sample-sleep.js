@@ -253,4 +253,4 @@ const sampleSleepData = [
 	},
 ];
 
-module.exports = sampleSleepData;
+export default sampleSleepData;
