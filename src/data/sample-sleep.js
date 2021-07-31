@@ -251,6 +251,18 @@ const sampleSleepData = [
 		hoursSlept: 4.3,
 		sleepQuality: 3.7,
 	},
+	{
+      "userID": 6,
+      "date": "2019/06/15",
+      "hoursSlept": 9,
+      "sleepQuality": 4
+    },
+		{
+      "userID": 6,
+      "date": "2019/06/21",
+      "hoursSlept": 9,
+      "sleepQuality": 4
+    }
 ];
 
 export default sampleSleepData;
