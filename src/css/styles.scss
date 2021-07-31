@@ -143,18 +143,6 @@ h1 {
   width: 40%;
 }
 
-.main-column-hydration-form {
-  @include card-today();
-  background-color: $teal;
-  width: 40%;
-}
-
-.main-column-sleep-form {
-  @include card-today();
-  background-color: $pink;
-  width: 40%;
-}
-
 .card-history-hydration {
   @include card-history();
   background-color: $teal;
@@ -170,12 +158,6 @@ h1 {
   background-color: $yellow;
   height: 93%;
   overflow: scroll;
-}
-
-.main-column-activity-form {
-  @include card-history();
-  background-color: $yellow;
-  width: 43%;
 }
 
 .number {
