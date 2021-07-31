@@ -8,12 +8,14 @@ import sampleSleepData from '../src/data/sample-sleep.js';
 import sampleActivityData from '../src/data/sample-activity.js';
 
 describe('User', () => {
-  let user1, user2, user3;
+  let user1, user2, user3, users, userRepo;
 
   beforeEach(() => {
     user1 = new User(sampleUserData[0]);
     user2 = new User(sampleUserData[1]);
     user3 = new User(sampleUserData[2]);
+    users = [user1, user2, user3];
+    userRepo = new UserRepo(users);
   });
 
   it('should be a function', () => {
@@ -36,29 +38,36 @@ describe('User', () => {
   
   describe('getFirstName()', () => {
 
-  it('should be a function', () => {
-    expect(user1.getFirstName).to.be.a.a('function');
-  });
+    it('should be a function', () => {
+      expect(user1.getFirstName).to.be.a.a('function');
+    });
 
-  it('should return user first name', () => {
-    expect(user2.getFirstName()).to.equal("Jarvis");
-  });
+    it('should return user first name', () => {
+      expect(user2.getFirstName()).to.equal("Jarvis");
+    });
 
   });
 
   describe('getFriendsNames()', () => {
   
-  it('should be a function', () => {
-    expect(user1.getFriendsNames).to.be.a('function');
+    it('should be a function', () => {
+      expect(user1.getFriendsNames).to.be.a('function');
+    });
+
+    it('should return list of friend names from user repository', () => {
+      expect(user1.getFriendsNames(userRepo)).to.eql(['Jarvis Considine', 'Herminia Witting']);
+    });
   });
 
-  it('should return list of friend names from user repository', () => {
-    const users = [user1, user2, user3];
-    const userRepo = new UserRepo(users);
+  describe('calcDailyMilesWalked()', () => {
+    
+    it('should be a function', () => {
+      expect(user2.calcDailyMilesWalked).to.be.a('function');
+    });
 
-    expect(user1.getFriendsNames(userRepo)).to.eql(['Jarvis Considine', 'Herminia Witting']);
-  });
-
+    it('should return the calculated daily miles walked for a given date', () => {
+      expect(user1.calcDailyMilesWalked(sampleActivityData, '2019/06/22')).to.equal(8.4);
+    });
   });
 
   describe('getDateAmount()', () => {
@@ -170,14 +179,6 @@ describe('User', () => {
     it('should calculate a users average daily sleep quality over all time', () => {
         expect(user1.calcAvgAllTime(sampleSleepData, 'sleepQuality')).to.equal(2.8);
     });
-  });
-
-  describe('calcDailyMilesWalked()', () => {
-
-    it('should be a function', () => {
-      expect(user3.calcDailyMilesWalked).to.be.a('function');
-    });
-
   });
 
   describe('getStepGoalResult()', () => {
