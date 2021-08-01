@@ -6,3 +6,4 @@ This is a project where we were required to refactor, navigate, and build on top
 
 This project was completed as a project at Turing School of Software & Design during Module 2.
 
+[The rubric is linked here.](https://frontend.turing.edu/projects/module-2/refactor-tractor-choice.html)
