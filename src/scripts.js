@@ -13,21 +13,7 @@ import Sleep from './Sleep';
 import UserRepo from './User-repo';
 import domUpdates from './domUpdates';
 
-const hydrationButton = document.getElementById('hydrationSubmitButton');
-const hydrationInput = document.getElementById('numOunces');
-const hydrationHeader = document.getElementById('hydrationFormHeader');
-
-const activityButton = document.getElementById('activitySubmitButton');
-const stepsInput = document.getElementById('numSteps');
-const minInput = document.getElementById('minutesActive');
-const stairsInput = document.getElementById('flightsOfStairs');
-const activityHeader = document.getElementById('activityFormHeader');
-
-const sleepButton = document.getElementById('sleepSubmitButton');
-const hrInput = document.getElementById('hoursSlept');
-const qualInput = document.getElementById('sleepQuality');
-const sleepHeader = document.getElementById('sleepFormHeader');
-
+const {hydrationButton, hydrationInput, hydrationHeader, activityButton, stepsInput, minInput, stairsInput, activityHeader, sleepButton, hrInput, qualInput, sleepHeader} = domUpdates;
 
 window.addEventListener('load', returnData);
 hydrationButton.addEventListener('click', postHydrationInputs)
