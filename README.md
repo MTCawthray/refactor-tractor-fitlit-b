@@ -71,3 +71,9 @@ Enter the following command in the Terminal:
 
 Enter the following command in the Terminal:
 `npm start`
+
+## Access and use website
+
+Enter the following URL in your internet browser:
+`http://localhost:8080/`
+
