@@ -77,3 +77,6 @@ Enter the following command in the Terminal:
 Enter the following URL in your internet browser:
 `http://localhost:8080/`
 
+## GIF
+
+![GIF](assets/refactor-fitlit.gif) 
