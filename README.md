@@ -15,3 +15,7 @@ This project was completed as a project at Turing School of Software & Design du
 A challenge was ______.
 
 A big success was ______.
+
+## Languages
+
+Written in JS, HTML, & CSS
