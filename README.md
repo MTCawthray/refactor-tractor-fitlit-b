@@ -85,3 +85,4 @@ Enter the following URL in your internet browser:
 
 * The user will have the ability to select the widgets that they always want to see at the top of the page.
 
+* The CSS will be improved, including removing the number of scroll bars.
