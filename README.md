@@ -80,3 +80,8 @@ Enter the following URL in your internet browser:
 ## GIF
 
 ![GIF](assets/refactor-fitlit.gif) 
+
+## Future additions
+
+* The user will have the ability to select the widgets that they always want to see at the top of the page.
+
