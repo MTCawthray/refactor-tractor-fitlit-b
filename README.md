@@ -1,19 +1,94 @@
-# Refactor Tractor (Fitlit Version B)
+# Refactor Tractor: FitLit (B)
 
-## Setup
+This is a project where we were required to refactor, navigate, and build on top of somebody else’s pre-existing codebase. Since working on another's code is common in software development, it was our first big opportunity to get comfortable doing this.
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "refactor-tractor-fitlit-b", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page) when you navigate to `http://localhost:8080/`
-1. Make sure both members of your team are collaborators on the forked repo.
+## Motivation and rubric
 
-## Testing
+This project was completed as a project at Turing School of Software & Design during Module 2.
 
-Testing is set up, but you will need to add more tests to it throughout your work flow. If you run `npm install`, you should see tests run. 
+[The rubric is linked here.](https://frontend.turing.edu/projects/module-2/refactor-tractor-choice.html)
 
-## Linting Your Code
+[The original repo is linked here.](https://github.com/turingschool-examples/refactor-tractor-fitlit-b)
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+## Reflections
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+Our biggest challenges were navigating the functions and organization of another's code and making network requests to API endpoints to retrieve and manipulate data.
+
+Big successes were implementation of SASS for the first time, getting accessibility to a score of 100 on Lighthouse, and resolving all of the above challenges with passing tests.
+
+## Languages and technology
+
+Written in JavaScript, Mocha, Chai, HTML, & SCSS
+
+Utilizes Webpack, NPM, & Node
+
+Built with Visual Studio Code
+
+[Code stored on GitHub](https://github.com/MTCawthray/refactor-tractor-fitlit-b)
+
+[Project board on GitHub](https://github.com/MTCawthray/refactor-tractor-fitlit-b/projects/1)
+
+## Repository install and setup
+
+### Clone project repository
+
+Enter the following command in the Terminal:
+`git clone https://github.com/MTCawthray/refactor-tractor-fitlit-b.git`
+
+### Navigate to folder
+
+Enter the following command in the Terminal:
+`cd refactor-tractor-fitlit-b.git`
+
+### Install dependencies
+
+Enter the following command in the Terminal:
+`npm install`
+
+### Run local host
+
+Enter the following command in the Terminal:
+`npm start`
+
+## API install and setup
+
+### Clone API repository
+
+Enter the following command in the Terminal:
+`git clone https://github.com/turingschool-examples/fitlit-api.git`
+
+### Navigate to folder
+
+Enter the following command in the Terminal:
+`cd fitlit-api`
+
+### Install dependencies
+
+Enter the following command in the Terminal:
+`npm install`
+
+### Run API
+
+Enter the following command in the Terminal:
+`npm start`
+
+## Access and use website
+
+Enter the following URL in your internet browser:
+`http://localhost:8080/`
+
+## GIF
+
+![GIF](assets/refactor-fitlit.gif) 
+
+## Future additions
+
+* The user will have the ability to select the widgets that they always want to see at the top of the page.
+
+* The CSS will be improved, including removing the number of scroll bars.
+
+## Contributors
+
+Refactoring completed by [Darla Evans](https://github.com/darlaevans2000), [Mark Cawthray](https://github.com/MTCawthray), [William Phelps](https://github.com/williamphelps13), & [Hayley Witherell](https://github.com/hayleyw7)
+
+Project designed by [Hannah Hudson](https://github.com/hannahhch)
