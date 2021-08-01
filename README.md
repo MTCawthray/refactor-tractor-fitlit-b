@@ -9,3 +9,9 @@ This project was completed as a project at Turing School of Software & Design du
 [The rubric is linked here.](https://frontend.turing.edu/projects/module-2/refactor-tractor-choice.html)
 
 [The original repo is linked here.](https://github.com/turingschool-examples/refactor-tractor-fitlit-b)
+
+## Reflections
+
+A challenge was ______.
+
+A big success was ______.
