@@ -28,3 +28,24 @@ Built with Visual Studio Code & Atom
 
 [Project board on GitHub](https://github.com/MTCawthray/refactor-tractor-fitlit-b/projects/1)
 
+## Repository install and setup
+
+### Clone project repository
+
+Enter the following command in the Terminal:
+`git clone https://github.com/MTCawthray/refactor-tractor-fitlit-b.git`
+
+### Navigate to folder
+
+Enter the following command in the Terminal:
+`cd refactor-tractor-fitlit-b.git`
+
+### Install dependencies
+
+Enter the following command in the Terminal:
+`npm install`
+
+### Run local host
+
+Enter the following command in the Terminal:
+`npm start`
