@@ -12,9 +12,8 @@ This project was completed as a project at Turing School of Software & Design du
 
 ## Reflections
 
-A challenge was ______.
+Our biggest challenges were navigating the functions and organization of another's code and making network requests to API endpoints to retrieve and manipulate data.
 
-A big success was ______.
 
 ## Languages
 
