@@ -1,4 +1,4 @@
-# Static Comp
+# Refactor Tractor: FitLit (B)
 
 This is a project where we were required to refactor, navigate, and build on top of somebody else’s pre-existing codebase. Since working on another's code is common in software development, it was our first big opportunity to get comfortable doing this.
 
