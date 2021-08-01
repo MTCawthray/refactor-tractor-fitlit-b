@@ -6,7 +6,7 @@ export function postHydrationData(userId, date, amount){
   let body = {
     "userID": userId, 
     "date": date, 
-    "numOunces": amount
+    "numOunces": parseFloat(amount)
   }
   return fetch(`http://localhost:3001/api/v1/hydration`, {
     method: 'POST',
@@ -21,8 +21,8 @@ export function postSleepData(userId, date, hours, quality){
   let body = {
     "userID": userId,
     "date": date,
-    "hoursSlept": hours,
-    "sleepQuality": quality
+    "hoursSlept": parseFloat(hours),
+    "sleepQuality": parseFloat(quality)
 
   }
   return fetch(`http://localhost:3001/api/v1/sleep`, {
@@ -38,9 +38,9 @@ export function postActivityData(userId, date, steps, minutes, stairs){
   let body = {
       "userID": userId,
       "date": date,
-      "numSteps": steps,
-      "minutesActive": minutes,
-      "flightsOfStairs": stairs
+      "numSteps": parseFloat(steps),
+      "minutesActive": parseFloat(minutes),
+      "flightsOfStairs": parseFloat(stairs)
     }
   return fetch(`http://localhost:3001/api/v1/activity`, {
     method: 'POST',

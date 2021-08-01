@@ -120,7 +120,22 @@ const domUpdates = {
   
   makeStepStreakHTML(method) {
     return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
-  }
+  },
+
+  hydrationButton: document.getElementById('hydrationSubmitButton'),
+  hydrationInput: document.getElementById('numOunces'),
+  hydrationHeader: document.getElementById('hydrationFormHeader'),
+
+  activityButton: document.getElementById('activitySubmitButton'),
+  stepsInput: document.getElementById('numSteps'),
+  minInput: document.getElementById('minutesActive'),
+  stairsInput: document.getElementById('flightsOfStairs'),
+  activityHeader: document.getElementById('activityFormHeader'),
+
+  sleepButton: document.getElementById('sleepSubmitButton'),
+  hrInput: document.getElementById('hoursSlept'),
+  qualInput: document.getElementById('sleepQuality'),
+  sleepHeader: document.getElementById('sleepFormHeader')
 }
 
 export default domUpdates;
