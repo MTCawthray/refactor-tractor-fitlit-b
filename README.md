@@ -86,3 +86,8 @@ Enter the following URL in your internet browser:
 * The user will have the ability to select the widgets that they always want to see at the top of the page.
 
 * The CSS will be improved, including removing the number of scroll bars.
+
+## Contributors
+
+Refactoring completed by [Darla Evans](https://github.com/darlaevans2000), [Mark Cawthray](https://github.com/MTCawthray), [William Phelps](https://github.com/williamphelps13), & [Hayley Witherell](https://github.com/hayleyw7)
+
