@@ -49,3 +49,25 @@ Enter the following command in the Terminal:
 
 Enter the following command in the Terminal:
 `npm start`
+
+## API install and setup
+
+### Clone API repository
+
+Enter the following command in the Terminal:
+`git clone https://github.com/turingschool-examples/fitlit-api.git`
+
+### Navigate to folder
+
+Enter the following command in the Terminal:
+`cd fitlit-api`
+
+### Install dependencies
+
+Enter the following command in the Terminal:
+`npm install`
+
+### Run API
+
+Enter the following command in the Terminal:
+`npm start`
