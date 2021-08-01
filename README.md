@@ -19,3 +19,8 @@ A big success was ______.
 ## Languages
 
 Written in JS, HTML, & CSS
+
+## Technology used
+
+Built with Visual Studio Code & Atom
+
