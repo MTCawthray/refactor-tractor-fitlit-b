@@ -14,6 +14,7 @@ This project was completed as a project at Turing School of Software & Design du
 
 Our biggest challenges were navigating the functions and organization of another's code and making network requests to API endpoints to retrieve and manipulate data.
 
+Big successes were implementation of SASS for the first time, getting accessibility to a score of 100 on Lighthouse, and resolving all of the above challenges with passing tests.
 
 ## Languages
 
