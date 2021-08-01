@@ -16,13 +16,13 @@ Our biggest challenges were navigating the functions and organization of another
 
 Big successes were implementation of SASS for the first time, getting accessibility to a score of 100 on Lighthouse, and resolving all of the above challenges with passing tests.
 
-## Languages
+## Languages and technology
 
-Written in JS, HTML, & CSS
+Written in JavaScript, Mocha, Chai, HTML, & SCSS
 
-## Technology used
+Utilizes Webpack, NPM, & Node
 
-Built with Visual Studio Code & Atom
+Built with Visual Studio Code
 
 [Code stored on GitHub](https://github.com/MTCawthray/refactor-tractor-fitlit-b)
 
