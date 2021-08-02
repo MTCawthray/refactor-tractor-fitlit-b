@@ -123,9 +123,9 @@ function postHydrationInputs() {
           console.log("success")
           console.log(currentUserId)
           hydrationHeader.innerText = "Great job! You have submitted your hydration data!"
+          domUpdates.renderSubmittedHydration(hydrationInput.value)
         }
       })
-      .then(domUpdates.renderSubmittedHydration(hydrationInput.value))
       .catch(error => {
         hydrationHeader.innerText = "Could not Fetch :( Check Internet?";
         console.log(error)
