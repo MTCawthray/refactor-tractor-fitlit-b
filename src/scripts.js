@@ -34,7 +34,8 @@ function returnData() {
     sleepData = promiseArray[2].sleepData;
     activityData = promiseArray[3].activityData;
     userRepo = new UserRepo(userData);
-    currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)));
+    // currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)));
+    currentUser = new User(userRepo.getDataFromID(2));
     currentUserId = currentUser.id;
     // can we make a function that returns a random date? 
     currentDate = "2020/01/22";
@@ -43,10 +44,10 @@ function returnData() {
   }).then(startApp);
 }
 
-function getRandomIndex(array) {
-  const index = Math.floor(Math.random() * array.length);
-  return index;
-}
+// function getRandomIndex(array) {
+//   const index = Math.floor(Math.random() * array.length);
+//   return index;
+// }
 
 function startApp() {
   let hydrationRepo = new Hydration(hydrationData);
@@ -113,56 +114,74 @@ function displayFriendGameInfo(id, activityInfo, userStorage, dateString, user) 
 }
 
 function postHydrationInputs() {
-  postHydrationData(currentUserId, currentDate, hydrationInput.value)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        // renderSuccessfulPost("hydration");
-        console.log("success")
-        console.log(currentUserId)
-        hydrationHeader.innerHTML = "Great job! You have submitted your hydration data!"
-      }
-    })
-    .catch(error => {
-      // showPostMessage('fail', error, 'hydration data')
-      console.log(error)
-    })
+  if (hydrationInput.value > 0 && hydrationInput.value < 200) {
+    postHydrationData(currentUserId, currentDate, hydrationInput.value)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        } else {
+          console.log("success")
+          console.log(currentUserId)
+          hydrationHeader.innerText = "Great job! You have submitted your hydration data!"
+          domUpdates.renderSubmittedHydration(hydrationInput.value)
+        }
+      })
+      .catch(error => {
+        hydrationHeader.innerText = "Could not Fetch :( Check Internet?";
+        console.log(error)
+      })
+  } else if (hydrationInput.value > 200) {
+    hydrationHeader.innerText = "Calm down Aquaman - Input too high!"
+  } else {
+    hydrationHeader.innerText = "Please enter a number 0 or higher"
+  }
 }
 
 function postActivityInputs() {
-  postActivityData(currentUserId, currentDate, stepsInput.value, minInput.value, stairsInput.value)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        // renderSuccessfulPost("hydration");
-        console.log("success")
-        console.log(currentUserId)
-        activityHeader.innerHTML = "Great job! You have submitted your activity data!"
-      }
-    })
-    .catch(error => {
-      // showPostMessage('fail', error, 'hydration data')
-      console.log(error)
-    })
+  if (stepsInput.value > 0 && stepsInput.value < 55000 && minInput.value > 0 && minInput.value < 1440 && stairsInput.value > 0 && stairsInput.value < 2909) {
+    postActivityData(currentUserId, currentDate, stepsInput.value, minInput.value, stairsInput.value)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        } else {
+          console.log("success")
+          console.log(currentUserId)
+          activityHeader.innerText = "Great job! You have submitted your activity data!"
+          domUpdates.renderSubmittedActivity(stepsInput.value, stairsInput.value, minInput.value)
+        }
+      })
+      .catch(error => {
+        activityHeader.innerText = "Could not Fetch :( Check Internet?"
+        console.log(error)
+      })
+  } else if (stepsInput.value > 55000 || minInput.value > 1440 || stairsInput.value > 2909) {
+    activityHeader.innerText = "You just missed the Olympics - Input too high!"
+  } else {
+    activityHeader.innerText = "Please enter a number 0 or higher"
+  }
 }
 
 function postSleepInputs() {
-  postSleepData(currentUserId, currentDate, hrInput.value, qualInput.value)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        // renderSuccessfulPost("hydration");
-        console.log("success")
-        console.log(currentUserId)
-        sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
-      }
-    })
-    .catch(error => {
-      // showPostMessage('fail', error, 'hydration data')
-      console.log(error)
-    })
+  if (hrInput.value > 0 && hrInput.value < 24 && qualInput.value > 0 && qualInput.value <= 5) {
+    postSleepData(currentUserId, currentDate, hrInput.value, qualInput.value)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        } else {
+          console.log("success")
+          console.log(currentUserId)
+          sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
+          domUpdates.renderSubmittedSleep(hrInput.value, qualInput.value)
+        }
+      })
+      .catch(error => {
+        sleepHeader.innerHTML = "Could not Fetch :( Check Internet?"
+        console.log(error)
+      })
+  } else if (hrInput.value > 24 || qualInput.value > 5) {
+    sleepHeader.innerHTML = "Get out of town Rip Van Winkel - Input too high!"
+  } else {
+    sleepHeader.innerHTML = "Please enter a number 0 or higher"
+  }
 }
 

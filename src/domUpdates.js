@@ -46,6 +46,11 @@ const domUpdates = {
     hydrationEarlierWeek.insertAdjacentHTML('afterBegin', repo.calculateRandomWeekOunces(randomDate, id, userRepo).map(drinkData => `<li class="historical-list-listItem">On ${drinkData}oz</li>`).join(''));
   },
 
+  renderSubmittedHydration(oz) {
+    hydrationToday.innerHTML = '';
+    hydrationToday.innerHTML = `<p>You drank</p><p><span class="number">${oz}</span></p><p>oz water today.</p>`
+  },
+
   renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id) {
     const sleepToday = document.getElementById('sleepToday');
     const sleepQualityToday = document.getElementById('sleepQualityToday');
@@ -62,6 +67,13 @@ const domUpdates = {
 
   makeSleepHTML(method) {
     return method.map(sleepData => `<li class="historical-list-listItem">On ${sleepData} hours</li>`).join('');
+  },
+
+  renderSubmittedSleep(hrs, qual) {
+    sleepToday.innerHTML = '';
+    sleepToday.innerHTML = `<p>You slept</p> <p><span class="number">${hrs}</span></p> <p>hours today.</p>`
+    sleepQualityToday.innerHTML = '';
+    sleepQualityToday.innerHTML = `<p>Your sleep quality was</p> <p><span class="number">${qual}</span></p><p>out of 5.</p>`
   },
 
   renderActivityInfo(currentUser, currentDate, activityData, startDate, userRepo, id, repo, winnerId) {
@@ -98,6 +110,15 @@ const domUpdates = {
   
   makeMinutesHTML(method) {
     return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
+  },
+
+  renderSubmittedActivity(steps, stairs, minutes) {
+    userStepsToday.innerHTML = '';
+    userStepsToday.innerHTML = `<p>Step Count:</p><p>You</p><p><span class="number">${steps}</span></p>`
+    userStairsToday.innerHTML = '';
+    userStairsToday.innerHTML = `<p>Stair Count:</p><p>You</><p><span class="number">${stairs}</span></p>`
+    userMinutesToday.innerHTML = '';
+    userMinutesToday.innerHTML = `<p>Active Minutes:</p><p>You</p><p><span class="number">${minutes}</span></p>`
   },
 
   renderFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
