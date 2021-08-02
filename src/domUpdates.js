@@ -69,6 +69,13 @@ const domUpdates = {
     return method.map(sleepData => `<li class="historical-list-listItem">On ${sleepData} hours</li>`).join('');
   },
 
+  renderSubmittedSleep(hrs, qual) {
+    sleepToday.innerHTML = '';
+    sleepToday.innerHTML = `<p>You slept</p> <p><span class="number">${hrs}</span></p> <p>hours today.</p>`
+    sleepQualityToday.innerHTML = '';
+    sleepQualityToday.innerHTML = `<p>Your sleep quality was</p> <p><span class="number">${qual}</span></p><p>out of 5.</p>`
+  },
+
   renderActivityInfo(currentUser, currentDate, activityData, startDate, userRepo, id, repo, winnerId) {
     const userStepsToday = document.getElementById('userStepsToday');
     const avgStepsToday = document.getElementById('avgStepsToday');
