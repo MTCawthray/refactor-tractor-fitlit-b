@@ -156,14 +156,14 @@ function postActivityInputs() {
         console.log(error)
       })
   } else if (stepsInput.value > 55000 || minInput.value > 1440 || stairsInput.value > 2909) {
-    actvityHeader.innerHTML = "You just missed the Olympics - Input too high!"
+    activityHeader.innerHTML = "You just missed the Olympics - Input too high!"
   } else {
-    activitynHeader.innerHTML = "Please enter a number 0 or higher"
+    activityHeader.innerHTML = "Please enter a number 0 or higher"
   }
 }
 
 function postSleepInputs() {
-  if (sleepInput.value > 0 && sleepInput.value < 200) {
+  if (hrInput.value > 0 && hrInput.value < 24 && qualInput.value > 0 && qualInput.value < 5) {
     postSleepData(currentUserId, currentDate, hrInput.value, qualInput.value)
       .then((response) => {
         if (!response.ok) {
@@ -179,8 +179,8 @@ function postSleepInputs() {
         // showPostMessage('fail', error, 'hydration data')
         console.log(error)
       })
-  } else if (sleepInput.value > 200) {
-    sleepHeader.innerHTML = "Calm down Aquaman"
+  } else if (hrInput.value > 24 || qualInput.value > 5) {
+    sleepHeader.innerHTML = "Get out of town Rip Van Winkel - Input too high!"
   } else {
     sleepHeader.innerHTML = "Please enter a number 0 or higher"
   }
