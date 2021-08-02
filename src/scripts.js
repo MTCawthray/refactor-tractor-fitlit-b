@@ -171,6 +171,7 @@ function postSleepInputs() {
           console.log("success")
           console.log(currentUserId)
           sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
+          domUpdates.renderSubmittedSleep(sleepInput.value)
         }
       })
       .catch(error => {
