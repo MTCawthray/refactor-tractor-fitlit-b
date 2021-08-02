@@ -62,7 +62,6 @@ class Activity {
   }
 
   showcaseWinner(user, date, userRepo) {
-    let namedList = this.showChallengeListAndWinner(user, date, userRepo);
     let winner = this.showChallengeListAndWinner(user, date, userRepo).shift();
     return winner;
   }

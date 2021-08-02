@@ -119,7 +119,7 @@ function displayHydrationInfo(repo, randomDate, id) {
   domUpdates.renderHydrationInfo(currentUser, currentDate, hydrationData, startDate, userRepo, repo, randomDate, id);
 }
 
-function displaySleepInfo(repo, randomDate, id, ) {
+function displaySleepInfo(repo, randomDate, id) {
   domUpdates.renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id);
 }
 

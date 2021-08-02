@@ -54,7 +54,7 @@
     ],
     "max-len": [
       "warn",
-      150
+      250
     ],
     "new-cap": [
       "error",
