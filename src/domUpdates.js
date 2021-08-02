@@ -112,6 +112,15 @@ const domUpdates = {
     return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
   },
 
+  renderSubmittedActivity(steps, stairs, minutes) {
+    userStepsToday.innerHTML = '';
+    userStepsToday.innerHTML = `<p>Step Count:</p><p>You</p><p><span class="number">${steps}</span></p>`
+    userStairsToday.innerHTML = '';
+    userStairsToday.innerHTML = `<p>Stair Count:</p><p>You</><p><span class="number">${stairs}</span></p>`
+    userMinutesToday.innerHTML = '';
+    userMinutesToday.innerHTML = `<p>Active Minutes:</p><p>You</p><p><span class="number">${minutes}</span></p>`
+  },
+
   renderFriendGameInfo(id, activityInfo, userStorage, dateString, user) {
     const friendChallengeListToday = document.getElementById('friendChallengeListToday');
     const streakList = document.getElementById('streakList');
