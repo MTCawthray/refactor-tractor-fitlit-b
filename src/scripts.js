@@ -34,7 +34,8 @@ function returnData() {
     sleepData = promiseArray[2].sleepData;
     activityData = promiseArray[3].activityData;
     userRepo = new UserRepo(userData);
-    currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)));
+    // currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)));
+    currentUser = new User(userRepo.getDataFromID(2));
     currentUserId = currentUser.id;
     // can we make a function that returns a random date? 
     currentDate = "2020/01/22";
@@ -43,10 +44,10 @@ function returnData() {
   }).then(startApp);
 }
 
-function getRandomIndex(array) {
-  const index = Math.floor(Math.random() * array.length);
-  return index;
-}
+// function getRandomIndex(array) {
+//   const index = Math.floor(Math.random() * array.length);
+//   return index;
+// }
 
 function startApp() {
   let hydrationRepo = new Hydration(hydrationData);
@@ -125,6 +126,7 @@ function postHydrationInputs() {
         hydrationHeader.innerHTML = "Great job! You have submitted your hydration data!"
       }
     })
+    .then(domUpdates.renderSubmittedHydration(hydrationInput.value))
     .catch(error => {
       // showPostMessage('fail', error, 'hydration data')
       console.log(error)
