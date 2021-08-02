@@ -1,5 +1,4 @@
 // COLORS
-
 $dark-gray: #3d87d1;
 $white: #ffffff;
 $medium-gray: #9A9DAB;
@@ -7,32 +6,25 @@ $black: black;
 $teal: #E3F5F2;
 $pink: #FAEBFA;
 $yellow: #FAFAEB;
-
 // FONTS
-
 $sans: sans-serif;
 $open: 'Open Sans';
-
 // LAYOUT
-
 // flex
-
 @mixin flex-row() {
   display: flex;
   flex-direction: row;
 }
-
 @mixin flex-column() {
   display: flex;
   flex-direction: column;
 }
 
 // cards
-
 @mixin card-today() {
   text-align: center;
   font-size: 1.5em;
-  margin: .5em;
+  margin: 0.5em;
   font-family: $sans;
   height: auto;
   @include flex-column();
@@ -42,7 +34,7 @@ $open: 'Open Sans';
 @mixin card-history() {
   text-align: center;
   font-size: 1em;
-  margin: .5em;
+  margin: 0.5em;
   font-family: $sans;
   @include flex-column();
   justify-content: flex-start;
@@ -50,7 +42,6 @@ $open: 'Open Sans';
 }
 
 // borders
-
 @mixin small-black-border() {
   border: 1px solid $black;
 }

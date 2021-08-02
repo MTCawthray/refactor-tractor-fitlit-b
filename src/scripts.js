@@ -4,7 +4,12 @@ import './css/styles.scss';
 import './images/person walking on path.jpg';
 import './images/The Rock.jpg';
 
-import { fetchData, postHydrationData, postActivityData, postSleepData } from './apiCalls';
+import {
+  fetchData,
+  postHydrationData,
+  postActivityData,
+  postSleepData
+} from './apiCalls';
 
 import User from './User';
 import Activity from './Activity';
@@ -13,7 +18,20 @@ import Sleep from './Sleep';
 import UserRepo from './User-repo';
 import domUpdates from './domUpdates';
 
-const {hydrationButton, hydrationInput, hydrationHeader, activityButton, stepsInput, minInput, stairsInput, activityHeader, sleepButton, hrInput, qualInput, sleepHeader} = domUpdates;
+const {
+  hydrationButton,
+  hydrationInput,
+  hydrationHeader,
+  activityButton,
+  stepsInput,
+  minInput,
+  stairsInput,
+  activityHeader,
+  sleepButton,
+  hrInput,
+  qualInput,
+  sleepHeader
+} = domUpdates;
 
 window.addEventListener('load', returnData);
 hydrationButton.addEventListener('click', postHydrationInputs)
@@ -28,20 +46,20 @@ function getData() {
 
 function returnData() {
   getData()
-  .then(promiseArray => {
-    userData = promiseArray[0].userData;
-    hydrationData = promiseArray[1].hydrationData;
-    sleepData = promiseArray[2].sleepData;
-    activityData = promiseArray[3].activityData;
-    userRepo = new UserRepo(userData);
-    // currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)));
-    currentUser = new User(userRepo.getDataFromID(2));
-    currentUserId = currentUser.id;
-    // can we make a function that returns a random date? 
-    currentDate = "2020/01/22";
-    // can we make a function that splices the current date and returns it 7 days earlier???
-    startDate = "2020/01/15";
-  }).then(startApp);
+    .then(promiseArray => {
+      userData = promiseArray[0].userData;
+      hydrationData = promiseArray[1].hydrationData;
+      sleepData = promiseArray[2].sleepData;
+      activityData = promiseArray[3].activityData;
+      userRepo = new UserRepo(userData);
+      // currentUser = new User(userRepo.getDataFromID(getRandomIndex(userData)));
+      currentUser = new User(userRepo.getDataFromID(2));
+      currentUserId = currentUser.id;
+      // can we make a function that returns a random date?
+      currentDate = "2020/01/22";
+      // can we make a function that splices the current date and returns it 7 days earlier???
+      startDate = "2020/01/15";
+    }).then(startApp);
 }
 
 // function getRandomIndex(array) {
@@ -79,7 +97,7 @@ function displayFirstName(user) {
   domUpdates.renderFirstName(user);
 }
 
-function displayInfoCard (name, address, email, strideLength, stepGoal, avStepGoal) {
+function displayInfoCard(name, address, email, strideLength, stepGoal, avStepGoal) {
   domUpdates.renderInfoCard(name, address, email, strideLength, stepGoal, avStepGoal);
 }
 
@@ -101,7 +119,7 @@ function displayHydrationInfo(repo, randomDate, id) {
   domUpdates.renderHydrationInfo(currentUser, currentDate, hydrationData, startDate, userRepo, repo, randomDate, id);
 }
 
-function displaySleepInfo(repo, randomDate, id, ) {
+function displaySleepInfo(repo, randomDate, id) {
   domUpdates.renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id);
 }
 
@@ -120,8 +138,6 @@ function postHydrationInputs() {
         if (!response.ok) {
           throw Error(response.statusText);
         } else {
-          console.log("success")
-          console.log(currentUserId)
           hydrationHeader.innerText = "Great job! You have submitted your hydration data!"
           domUpdates.renderSubmittedHydration(hydrationInput.value)
         }
@@ -144,8 +160,6 @@ function postActivityInputs() {
         if (!response.ok) {
           throw Error(response.statusText);
         } else {
-          console.log("success")
-          console.log(currentUserId)
           activityHeader.innerText = "Great job! You have submitted your activity data!"
           domUpdates.renderSubmittedActivity(stepsInput.value, stairsInput.value, minInput.value)
         }
@@ -168,8 +182,6 @@ function postSleepInputs() {
         if (!response.ok) {
           throw Error(response.statusText);
         } else {
-          console.log("success")
-          console.log(currentUserId)
           sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
           domUpdates.renderSubmittedSleep(hrInput.value, qualInput.value)
         }
@@ -184,4 +196,3 @@ function postSleepInputs() {
     sleepHeader.innerHTML = "Please enter a number 0 or higher"
   }
 }
-

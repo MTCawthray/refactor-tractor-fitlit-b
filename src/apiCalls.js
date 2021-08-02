@@ -2,10 +2,10 @@ export function fetchData(file) {
   return fetch(`http://localhost:3001/api/v1/${file}`).then(response => response.json());
 }
 
-export function postHydrationData(userId, date, amount){
+export function postHydrationData(userId, currentDate, amount) {
   let body = {
-    "userID": userId, 
-    "date": date, 
+    "userID": userId,
+    "date": currentDate,
     "numOunces": parseFloat(amount)
   }
   return fetch(`http://localhost:3001/api/v1/hydration`, {
@@ -17,10 +17,10 @@ export function postHydrationData(userId, date, amount){
   })
 }
 
-export function postSleepData(userId, date, hours, quality){
+export function postSleepData(userId, currentDate, hours, quality) {
   let body = {
     "userID": userId,
-    "date": date,
+    "date": currentDate,
     "hoursSlept": parseFloat(hours),
     "sleepQuality": parseFloat(quality)
 
@@ -34,14 +34,14 @@ export function postSleepData(userId, date, hours, quality){
   })
 }
 
-export function postActivityData(userId, date, steps, minutes, stairs){
+export function postActivityData(userId, currentDate, steps, minutes, stairs) {
   let body = {
-      "userID": userId,
-      "date": date,
-      "numSteps": parseFloat(steps),
-      "minutesActive": parseFloat(minutes),
-      "flightsOfStairs": parseFloat(stairs)
-    }
+    "userID": userId,
+    "date": currentDate,
+    "numSteps": parseFloat(steps),
+    "minutesActive": parseFloat(minutes),
+    "flightsOfStairs": parseFloat(stairs)
+  }
   return fetch(`http://localhost:3001/api/v1/activity`, {
     method: 'POST',
     body: JSON.stringify(body),
@@ -50,4 +50,3 @@ export function postActivityData(userId, date, steps, minutes, stairs){
     }
   })
 }
-

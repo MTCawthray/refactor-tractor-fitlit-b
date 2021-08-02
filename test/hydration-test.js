@@ -6,7 +6,7 @@ import sampleHydrationData from '../src/data/sample-hydration.js';
 
 describe('Hydration', () => {
   let hydration, hydrationData, user3, user4, users, userRepo;
-  
+
   beforeEach( () => {
     user3 = new User({
       id: 3,

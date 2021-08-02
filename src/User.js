@@ -9,6 +9,7 @@ class User {
     this.friends = userDetails.friends;
 
   }
+
   getFirstName() {
     return this.name.split(' ')[0];
   }
@@ -33,7 +34,7 @@ class User {
     const index = usersData.findIndex(entry => entry.date === startDate);
     const weekLog = usersData.slice(index, index + 7);
 
-    return weekLog.map(data =>`${data.date}: ${data[property]}`);
+    return weekLog.map(data => `${data.date}: ${data[property]}`);
   }
 
   calcAvgOverWeek(data, startDate, property) {
@@ -48,7 +49,7 @@ class User {
     return Math.round(total / 7);
   }
 
-    calcAvgAllTime(data, property) {
+  calcAvgAllTime(data, property) {
     const usersData = data.filter(entry => entry.userID === this.id)
     const dailySum = usersData.map(entry => entry[property]);
     const totalSum = dailySum.reduce((sum, num) => {

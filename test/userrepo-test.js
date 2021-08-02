@@ -78,24 +78,79 @@ describe('User Repo', () => {
   });
 
   describe('array changes', () => {
-    
+
     it('should get a users data from its userID in any data set', () => {
 
-      expect(userRepo.getDataFromUserID(1, hydrationData)).to.eql([
-      { userID: 1, date: '2019/06/15', numOunces: 37 },
-      { userID: 1, date: '2019/06/16', numOunces: 69 },
-      { userID: 1, date: '2019/06/17', numOunces: 96 },
-      { userID: 1, date: '2019/06/18', numOunces: 61 },
-      { userID: 1, date: '2019/06/19', numOunces: 91 },
-      { userID: 1, date: '2019/06/20', numOunces: 50 },
-      { userID: 1, date: '2019/06/21', numOunces: 50 },
-      { userID: 1, date: '2019/06/22', numOunces: 43 },
-      { userID: 1, date: '2019/06/23', numOunces: 39 },
-      { userID: 1, date: '2019/06/24', numOunces: 61 },
-      { userID: 1, date: '2019/06/25', numOunces: 51 },
-      { userID: 1, date: '2019/06/26', numOunces: 52 },
-      { userID: 1, date: '2019/06/27', numOunces: 29 },
-      { userID: 1, date: '2019/06/28', numOunces: 57 }
+      expect(userRepo.getDataFromUserID(1, hydrationData)).to.eql([{
+        userID: 1,
+        date: '2019/06/15',
+        numOunces: 37
+      },
+      {
+        userID: 1,
+        date: '2019/06/16',
+        numOunces: 69
+      },
+      {
+        userID: 1,
+        date: '2019/06/17',
+        numOunces: 96
+      },
+      {
+        userID: 1,
+        date: '2019/06/18',
+        numOunces: 61
+      },
+      {
+        userID: 1,
+        date: '2019/06/19',
+        numOunces: 91
+      },
+      {
+        userID: 1,
+        date: '2019/06/20',
+        numOunces: 50
+      },
+      {
+        userID: 1,
+        date: '2019/06/21',
+        numOunces: 50
+      },
+      {
+        userID: 1,
+        date: '2019/06/22',
+        numOunces: 43
+      },
+      {
+        userID: 1,
+        date: '2019/06/23',
+        numOunces: 39
+      },
+      {
+        userID: 1,
+        date: '2019/06/24',
+        numOunces: 61
+      },
+      {
+        userID: 1,
+        date: '2019/06/25',
+        numOunces: 51
+      },
+      {
+        userID: 1,
+        date: '2019/06/26',
+        numOunces: 52
+      },
+      {
+        userID: 1,
+        date: '2019/06/27',
+        numOunces: 29
+      },
+      {
+        userID: 1,
+        date: '2019/06/28',
+        numOunces: 57
+      }
       ]);
     });
 
@@ -127,13 +182,15 @@ describe('User Repo', () => {
     });
 
     it('should isolate a user ID and its values of any relevant data', () => {
-      expect(userRepo.isolateUsernameAndRelevantData(sleepData, "2019/06/21", 'sleepQuality', userRepo.chooseWeekDataForAllUsers(sleepData, "2019/06/21"))).to.eql({'1': [ 2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2 ],
-        '2': [ 4.7, 3.8, 3, 3.2, 2.5, 2.4, 4.8 ],
-        '3': [ 4.7, 3.4, 4.9, 2.6, 3.4, 1.2, 3.7 ],
-        '6': [ 4, 4 ]
+      expect(userRepo.isolateUsernameAndRelevantData(sleepData, "2019/06/21", 'sleepQuality', userRepo.chooseWeekDataForAllUsers(sleepData, "2019/06/21"))).to.eql({
+        '1': [2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2],
+        '2': [4.7, 3.8, 3, 3.2, 2.5, 2.4, 4.8],
+        '3': [4.7, 3.4, 4.9, 2.6, 3.4, 1.2, 3.7],
+        '6': [4, 4]
       });
 
-      expect(userRepo.isolateUsernameAndRelevantData(hydrationData, "2019/06/21", 'numOunces', userRepo.chooseWeekDataForAllUsers(hydrationData, "2019/06/21"))).to.eql({'1': [37, 69, 96, 61, 91, 50, 50],
+      expect(userRepo.isolateUsernameAndRelevantData(hydrationData, "2019/06/21", 'numOunces', userRepo.chooseWeekDataForAllUsers(hydrationData, "2019/06/21"))).to.eql({
+        '1': [37, 69, 96, 61, 91, 50, 50],
         '2': [75, 91, 96, 70, 76, 71, 27],
         '3': [47, 99, 28, 40, 85, 51, 41]
       });
@@ -144,7 +201,9 @@ describe('User Repo', () => {
     });
 
     it('should show list in order of userID and average of relevant value', () => {
-      expect(userRepo.combineRankedUserIDsAndAveragedData(sleepData, "2019/06/21", 'sleepQuality', userRepo.chooseWeekDataForAllUsers(sleepData, "2019/06/21"))[0]).to.eql({'6': 4})
+      expect(userRepo.combineRankedUserIDsAndAveragedData(sleepData, "2019/06/21", 'sleepQuality', userRepo.chooseWeekDataForAllUsers(sleepData, "2019/06/21"))[0]).to.eql({
+        '6': 4
+      })
     });
   });
 });

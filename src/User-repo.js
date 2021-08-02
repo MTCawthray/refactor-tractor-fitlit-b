@@ -3,9 +3,9 @@ class UserRepo {
     this.users = users;
   }
 
-// ACCESS USER
+  // ACCESS USER
 
-  getDataFromID(id) { 
+  getDataFromID(id) {
     return this.users.find((user) => id === user.id);
   }
 
@@ -14,7 +14,7 @@ class UserRepo {
   }
 
   /////////////////////////////////////////////
-  
+
   // NEW HELPER FUNCTIONS
 
   getAllUsersAvgByDate(date, property, activityData) {
@@ -75,7 +75,7 @@ class UserRepo {
     });
   }
 
-    // only used once: user-repo.combineRankedUserIDsAndAveragedData() helper function below
+  // only used once: user-repo.combineRankedUserIDsAndAveragedData() helper function below
 
   rankUserIDsbyRelevantDataValue(dataSet, date, relevantData, listFromMethod) {
     let sortedObjectKeys = this.isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod)
@@ -117,7 +117,7 @@ class UserRepo {
     return sortedByDate;
   }
 
- // only used twice (in 2 other helper functions): user-repo.combineRankedUserIDsAndAveragedData() & user-repo.rankUserIDsbyRelevantDataValue()
+  // only used twice (in 2 other helper functions): user-repo.combineRankedUserIDsAndAveragedData() & user-repo.rankUserIDsbyRelevantDataValue()
 
   isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod) {
     return listFromMethod.reduce(function(acc, dataItem) {

@@ -46,7 +46,7 @@ h1 {
   font-family: $sans;
   font-size: 1.2em;
   font-weight: bold;
-  margin: .5em .5em .5em .5em;
+  margin: 0.5em;
   width: inherit;
 }
 
@@ -54,7 +54,7 @@ h1 {
   @include small-black-border();
   color: $white;
   height: 0;
-  margin: 1em 1em 0 1em;
+  margin: 1em 1em 0;
   width: 80%;
 }
 
@@ -65,7 +65,7 @@ h1 {
   border-width: 1px;
   height: 200px;
   justify-content: center;
-  margin: 4px 2px 2px 2px;
+  margin: 4px 2px 2px;
   width: 200px;
 }
 
@@ -87,17 +87,17 @@ h1 {
 
 .main-column-hydration {
   @include flex-row();
-  height: 25%
+  height: 25%;
 }
 
 .main-column-activity {
   @include flex-row();
-  height: 50%
+  height: 50%;
 }
 
 .main-column-sleep {
   @include flex-row();
-  height: 35%
+  height: 35%;
 }
 
 .infoContainer-cardContainer-card-horizontal {
@@ -172,7 +172,7 @@ h1 {
   color: $black;
   font-size: 1em;
   font-weight: bolder;
-  margin: .5em;
+  margin: 0.5em;
   text-align: center;
 }
 
@@ -187,5 +187,5 @@ h1 {
 .historical-list-listItem {
   font-family: $sans;
   font-weight: bold;
-  padding: .3em;
+  padding: 0.3em;
 }
