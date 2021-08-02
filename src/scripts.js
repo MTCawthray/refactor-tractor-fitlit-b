@@ -147,6 +147,7 @@ function postActivityInputs() {
           console.log("success")
           console.log(currentUserId)
           activityHeader.innerText = "Great job! You have submitted your activity data!"
+          domUpdates.renderSubmittedActivity(activityInput.value)
         }
       })
       .catch(error => {
