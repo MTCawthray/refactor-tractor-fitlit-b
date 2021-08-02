@@ -46,6 +46,11 @@ const domUpdates = {
     hydrationEarlierWeek.insertAdjacentHTML('afterBegin', repo.calculateRandomWeekOunces(randomDate, id, userRepo).map(drinkData => `<li class="historical-list-listItem">On ${drinkData}oz</li>`).join(''));
   },
 
+  renderSubmittedHydration(oz) {
+    hydrationToday.innerHTML = '';
+    hydrationToday.innerHTML = `<p>You drank</p><p><span class="number">${oz}</span></p><p>oz water today.</p>`
+  },
+
   renderSleepInfo(currentUser, currentDate, sleepData, startDate, userRepo, repo, randomDate, id) {
     const sleepToday = document.getElementById('sleepToday');
     const sleepQualityToday = document.getElementById('sleepQualityToday');
