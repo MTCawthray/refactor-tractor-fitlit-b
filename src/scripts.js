@@ -147,7 +147,7 @@ function postActivityInputs() {
           console.log("success")
           console.log(currentUserId)
           activityHeader.innerText = "Great job! You have submitted your activity data!"
-          domUpdates.renderSubmittedActivity(activityInput.value)
+          domUpdates.renderSubmittedActivity(stepsInput.value, stairsInput.value, minInput.value)
         }
       })
       .catch(error => {
@@ -162,7 +162,7 @@ function postActivityInputs() {
 }
 
 function postSleepInputs() {
-  if (hrInput.value > 0 && hrInput.value < 24 && qualInput.value > 0 && qualInput.value < 5) {
+  if (hrInput.value > 0 && hrInput.value < 24 && qualInput.value > 0 && qualInput.value <= 5) {
     postSleepData(currentUserId, currentDate, hrInput.value, qualInput.value)
       .then((response) => {
         if (!response.ok) {
@@ -171,7 +171,7 @@ function postSleepInputs() {
           console.log("success")
           console.log(currentUserId)
           sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
-          domUpdates.renderSubmittedSleep(sleepInput.value)
+          domUpdates.renderSubmittedSleep(hrInput.value, qualInput.value)
         }
       })
       .catch(error => {
