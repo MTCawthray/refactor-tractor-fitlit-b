@@ -15,7 +15,7 @@
       <form class='hydration-form form' action='index.html' method='post'>
         <h2 id='hydrationFormHeader'>Submit Todays Hydration Data</h2>
         <label for='numOunces'>Number of Ounces</label>
-        <input type='number' name='numOunces' id='numOunces' value='0' step='1' min='0' max='100'>
+        <input type='number' name='numOunces' id='numOunces' value='0' step='1' min='0' max='100' aria-required="true" required>
         <button type='button' name='button' class='new-data-submit-button' id='hydrationSubmitButton'>Submit</button>
       </form>
     </section>
@@ -23,11 +23,11 @@
       <form class='activity-form form' action='index.html' method='post'>
         <h2 id='activityFormHeader'>Submit Todays Activity Data</h2>
         <label for='numSteps'>Number of Steps</label>
-        <input type='number' name='numSteps' id='numSteps' value='0' step='1' min='0' max='15000'>
+        <input type='number' name='numSteps' id='numSteps' value='0' step='1' min='0' max='15000' aria-required="true" required>
         <label for='minutesActive'>Minutes Active</label>
-        <input type='number' name='minutesActive' id='minutesActive' value='0' step='1' min='0' max='300'>
+        <input type='number' name='minutesActive' id='minutesActive' value='0' step='1' min='0' max='300' aria-required="true" required>
         <label for='flightsOfStairs'>Flights of Stairs</label>
-        <input type='number' name='flightsOfStairs' id='flightsOfStairs' value='0' step='1' min='0' max='50'>
+        <input type='number' name='flightsOfStairs' id='flightsOfStairs' value='0' step='1' min='0' max='50' aria-required="true" required>
         <button type='button' name='button' class='new-data-submit-button' id='activitySubmitButton'>Submit</button>
       </form>
     </section>
@@ -35,9 +35,9 @@
       <form class='sleep-form form' action='index.html' method='post'>
         <h2 id='sleepFormHeader'>Submit Last Nights Sleep Data</h2>
         <label for='hoursSlept'>Hours Slept</label>
-        <input type='number' name='hoursSlept' id='hoursSlept' value='0' step='0.1' min='0' max='24'>
+        <input type='number' name='hoursSlept' id='hoursSlept' value='0' step='0.1' min='0' max='24' aria-required="true" required>
         <label for='sleepQuality'>Sleep Quality (on a scale of 0 to 5)</label>
-        <input type='number' name='sleepQuality' id='sleepQuality' value='0' step='0.1' min='0' max='10'>
+        <input type='number' name='sleepQuality' id='sleepQuality' value='0' step='0.1' min='0' max='10' aria-required="true" required>
         <button type='button' name='button' class='new-data-submit-button' id='sleepSubmitButton'>Submit</button>
       </form>
     </section>
