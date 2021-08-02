@@ -120,21 +120,20 @@ function postHydrationInputs() {
         if (!response.ok) {
           throw Error(response.statusText);
         } else {
-          // renderSuccessfulPost("hydration");
           console.log("success")
           console.log(currentUserId)
-          hydrationHeader.innerHTML = "Great job! You have submitted your hydration data!"
+          hydrationHeader.innerText = "Great job! You have submitted your hydration data!"
         }
       })
       .then(domUpdates.renderSubmittedHydration(hydrationInput.value))
       .catch(error => {
-        // showPostMessage('fail', error, 'hydration data')
+        hydrationHeader.innerText = "Could not Fetch :( Check Internet?";
         console.log(error)
       })
   } else if (hydrationInput.value > 200) {
-    hydrationHeader.innerHTML = "Calm down Aquaman - Input too high!"
+    hydrationHeader.innerText = "Calm down Aquaman - Input too high!"
   } else {
-    hydrationHeader.innerHTML = "Please enter a number 0 or higher"
+    hydrationHeader.innerText = "Please enter a number 0 or higher"
   }
 }
 
@@ -145,20 +144,19 @@ function postActivityInputs() {
         if (!response.ok) {
           throw Error(response.statusText);
         } else {
-          // renderSuccessfulPost("hydration");
           console.log("success")
           console.log(currentUserId)
-          activityHeader.innerHTML = "Great job! You have submitted your activity data!"
+          activityHeader.innerText = "Great job! You have submitted your activity data!"
         }
       })
       .catch(error => {
-        // showPostMessage('fail', error, 'hydration data')
+        activityHeader.innerText = "Could not Fetch :( Check Internet?"
         console.log(error)
       })
   } else if (stepsInput.value > 55000 || minInput.value > 1440 || stairsInput.value > 2909) {
-    activityHeader.innerHTML = "You just missed the Olympics - Input too high!"
+    activityHeader.innerText = "You just missed the Olympics - Input too high!"
   } else {
-    activityHeader.innerHTML = "Please enter a number 0 or higher"
+    activityHeader.innerText = "Please enter a number 0 or higher"
   }
 }
 
@@ -169,14 +167,13 @@ function postSleepInputs() {
         if (!response.ok) {
           throw Error(response.statusText);
         } else {
-          // renderSuccessfulPost("hydration");
           console.log("success")
           console.log(currentUserId)
           sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
         }
       })
       .catch(error => {
-        // showPostMessage('fail', error, 'hydration data')
+        sleepHeader.innerHTML = "Could not Fetch :( Check Internet?"
         console.log(error)
       })
   } else if (hrInput.value > 24 || qualInput.value > 5) {
