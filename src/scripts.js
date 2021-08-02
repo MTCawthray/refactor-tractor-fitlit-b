@@ -115,62 +115,74 @@ function displayFriendGameInfo(id, activityInfo, userStorage, dateString, user) 
 
 function postHydrationInputs() {
   if (hydrationInput.value > 0 && hydrationInput.value < 200) {
-  postHydrationData(currentUserId, currentDate, hydrationInput.value)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        // renderSuccessfulPost("hydration");
-        console.log("success")
-        console.log(currentUserId)
-        hydrationHeader.innerHTML = "Great job! You have submitted your hydration data!"
-      }
-    })
-    .then(domUpdates.renderSubmittedHydration(hydrationInput.value))
-    .catch(error => {
-      // showPostMessage('fail', error, 'hydration data')
-      console.log(error)
-    })
+    postHydrationData(currentUserId, currentDate, hydrationInput.value)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        } else {
+          // renderSuccessfulPost("hydration");
+          console.log("success")
+          console.log(currentUserId)
+          hydrationHeader.innerHTML = "Great job! You have submitted your hydration data!"
+        }
+      })
+      .then(domUpdates.renderSubmittedHydration(hydrationInput.value))
+      .catch(error => {
+        // showPostMessage('fail', error, 'hydration data')
+        console.log(error)
+      })
   } else if (hydrationInput.value > 200) {
-    hydrationHeader.innerHTML = "Calm down Aquaman"
+    hydrationHeader.innerHTML = "Calm down Aquaman - Input too high!"
   } else {
     hydrationHeader.innerHTML = "Please enter a number 0 or higher"
   }
 }
 
 function postActivityInputs() {
-  postActivityData(currentUserId, currentDate, stepsInput.value, minInput.value, stairsInput.value)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        // renderSuccessfulPost("hydration");
-        console.log("success")
-        console.log(currentUserId)
-        activityHeader.innerHTML = "Great job! You have submitted your activity data!"
-      }
-    })
-    .catch(error => {
-      // showPostMessage('fail', error, 'hydration data')
-      console.log(error)
-    })
+  if (stepsInput.value > 0 && stepsInput.value < 55000 && minInput.value > 0 && minInput.value < 1440 && stairsInput.value > 0 && stairsInput.value < 2909) {
+    postActivityData(currentUserId, currentDate, stepsInput.value, minInput.value, stairsInput.value)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        } else {
+          // renderSuccessfulPost("hydration");
+          console.log("success")
+          console.log(currentUserId)
+          activityHeader.innerHTML = "Great job! You have submitted your activity data!"
+        }
+      })
+      .catch(error => {
+        // showPostMessage('fail', error, 'hydration data')
+        console.log(error)
+      })
+  } else if (stepsInput.value > 55000 || minInput.value > 1440 || stairsInput.value > 2909) {
+    actvityHeader.innerHTML = "You just missed the Olympics - Input too high!"
+  } else {
+    activitynHeader.innerHTML = "Please enter a number 0 or higher"
+  }
 }
 
 function postSleepInputs() {
-  postSleepData(currentUserId, currentDate, hrInput.value, qualInput.value)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else {
-        // renderSuccessfulPost("hydration");
-        console.log("success")
-        console.log(currentUserId)
-        sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
-      }
-    })
-    .catch(error => {
-      // showPostMessage('fail', error, 'hydration data')
-      console.log(error)
-    })
+  if (sleepInput.value > 0 && sleepInput.value < 200) {
+    postSleepData(currentUserId, currentDate, hrInput.value, qualInput.value)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        } else {
+          // renderSuccessfulPost("hydration");
+          console.log("success")
+          console.log(currentUserId)
+          sleepHeader.innerHTML = "Great job! You have submitted your sleep data!"
+        }
+      })
+      .catch(error => {
+        // showPostMessage('fail', error, 'hydration data')
+        console.log(error)
+      })
+  } else if (sleepInput.value > 200) {
+    sleepHeader.innerHTML = "Calm down Aquaman"
+  } else {
+    sleepHeader.innerHTML = "Please enter a number 0 or higher"
+  }
 }
 
