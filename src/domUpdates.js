@@ -3,7 +3,7 @@ const domUpdates = {
     const historicalWeek = document.querySelectorAll('.historicalWeek');
     historicalWeek.forEach(element => element.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
   },
-  
+
   renderFirstName(user) {
     const headerText = document.getElementById('headerText');
     headerText.innerText = `${user.getFirstName()}'s Activity Tracker`;
@@ -38,7 +38,7 @@ const domUpdates = {
     const hydrationToday = document.getElementById('hydrationToday');
     const hydrationAverage = document.getElementById('hydrationAverage');
     const hydrationThisWeek = document.getElementById('hydrationThisWeek');
-    const hydrationEarlierWeek = document.getElementById('hydrationEarlierWeek'); 
+    const hydrationEarlierWeek = document.getElementById('hydrationEarlierWeek');
 
     hydrationToday.insertAdjacentHTML('afterBegin', `<p>You drank</p><p><span class="number">${currentUser.getDateAmount(currentDate, hydrationData, 'numOunces')}</span></p><p>oz water today.</p>`);
     hydrationAverage.insertAdjacentHTML('afterBegin', `<p>Your average water intake is</p><p><span class="number">${currentUser.calcAvgAllTime(hydrationData, 'numOunces')}</span></p> <p>oz per day.</p>`)
@@ -103,11 +103,11 @@ const domUpdates = {
   makeStepsHTML(method) {
     return method.map(activityData => `<li class="historical-list-listItem">On ${activityData} steps</li>`).join('');
   },
-  
+
   makeStairsHTML(method) {
     return method.map(data => `<li class="historical-list-listItem">On ${data} flights</li>`).join('');
   },
-  
+
   makeMinutesHTML(method) {
     return method.map(data => `<li class="historical-list-listItem">On ${data} minutes</li>`).join('');
   },
@@ -134,11 +134,11 @@ const domUpdates = {
     friendChallengeListHistory.insertAdjacentHTML("afterBegin", this.makeFriendChallengeHTML(activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
     bigWinner.insertAdjacentHTML('afterBegin', `THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)} steps`)
   },
-  
+
   makeFriendChallengeHTML(method) {
     return method.map(friendChallengeData => `<li class="historical-list-listItem">Your friend ${friendChallengeData} average steps.</li>`).join('');
   },
-  
+
   makeStepStreakHTML(method) {
     return method.map(streakData => `<li class="historical-list-listItem">${streakData}!</li>`).join('');
   },

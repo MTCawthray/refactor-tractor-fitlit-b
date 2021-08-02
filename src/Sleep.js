@@ -2,11 +2,11 @@ class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
   }
- 
+
   calculateWeekSleep(date, id, userRepo) {
     return userRepo.getWeekFromDate(date, id, this.sleepData).map((data) => `${data.date}: ${data.hoursSlept}`);
   }
-  
+
 
   determineBestSleepers(date, userRepo) {
     let timeline = userRepo.chooseWeekDataForAllUsers(this.sleepData, date);
@@ -21,18 +21,21 @@ class Sleep {
       return userRepo.getDataFromID(parseInt(sleeper)).name;
     })
   }
+
   determineSleepWinnerForWeek(date, userRepo) {
     let timeline = userRepo.chooseWeekDataForAllUsers(this.sleepData, date);
     let sleepRankWithData = userRepo.combineRankedUserIDsAndAveragedData(this.sleepData, date, 'sleepQuality', timeline);
 
     return this.getWinnerNamesFromList(sleepRankWithData, userRepo);
   }
+
   determineSleepHoursWinnerForDay(date, userRepo) {
     let timeline = userRepo.chooseDayDataForAllUsers(this.sleepData, date);
     let sleepRankWithData = userRepo.combineRankedUserIDsAndAveragedData(this.sleepData, date, 'hoursSlept', timeline);
 
     return this.getWinnerNamesFromList(sleepRankWithData, userRepo);
   }
+  
   getWinnerNamesFromList(sortedArray, userRepo) {
     let bestSleepers = sortedArray.filter(function(element) {
       return element[Object.keys(element)] === Object.values(sortedArray[0])[0]
@@ -46,7 +49,7 @@ class Sleep {
       return userRepo.getDataFromID(parseInt(sleepNumber)).name;
     });
   }
-  
+
 }
 
 

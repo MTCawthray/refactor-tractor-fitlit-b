@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitLit Activity Tracker</title>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap"
-    rel="stylesheet" />
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitLit Activity Tracker</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet" />
 </head>
 
 <body>
   <h1 id="headerText">Activity Tracker</h1>
-    <section class='infoContainer-cardContainer-card-horizontal' id='hydration-form-card'>
-      <form class='hydration-form form' action='index.html' method='post'>
-        <h2 id='hydrationFormHeader'>Submit Todays Hydration Data</h2>
-        <label for='numOunces'>Number of Ounces</label>
-        <input type='number' name='numOunces' id='numOunces' value='0' step='1' min='0' max='100' aria-required="true" required>
-        <button type='button' name='button' class='new-data-submit-button' id='hydrationSubmitButton'>Submit</button>
-      </form>
-    </section>
-    <section class='infoContainer-cardContainer-card-horizontal' id='activity-form-card'>
-      <form class='activity-form form' action='index.html' method='post'>
-        <h2 id='activityFormHeader'>Submit Todays Activity Data</h2>
-        <label for='numSteps'>Number of Steps</label>
-        <input type='number' name='numSteps' id='numSteps' value='0' step='1' min='0' max='15000' aria-required="true" required>
-        <label for='minutesActive'>Minutes Active</label>
-        <input type='number' name='minutesActive' id='minutesActive' value='0' step='1' min='0' max='300' aria-required="true" required>
-        <label for='flightsOfStairs'>Flights of Stairs</label>
-        <input type='number' name='flightsOfStairs' id='flightsOfStairs' value='0' step='1' min='0' max='50' aria-required="true" required>
-        <button type='button' name='button' class='new-data-submit-button' id='activitySubmitButton'>Submit</button>
-      </form>
-    </section>
-    <section class="infoContainer-cardContainer-card-horizontal" id='sleep-form-card'>
-      <form class='sleep-form form' action='index.html' method='post'>
-        <h2 id='sleepFormHeader'>Submit Last Nights Sleep Data</h2>
-        <label for='hoursSlept'>Hours Slept</label>
-        <input type='number' name='hoursSlept' id='hoursSlept' value='0' step='0.1' min='0' max='24' aria-required="true" required>
-        <label for='sleepQuality'>Sleep Quality (on a scale of 0 to 5)</label>
-        <input type='number' name='sleepQuality' id='sleepQuality' value='0' step='0.1' min='0' max='10' aria-required="true" required>
-        <button type='button' name='button' class='new-data-submit-button' id='sleepSubmitButton'>Submit</button>
-      </form>
-    </section>
+  <section class='infoContainer-cardContainer-card-horizontal' id='hydration-form-card'>
+    <form class='hydration-form form' action='index.html' method='post'>
+      <h2 id='hydrationFormHeader'>Submit Todays Hydration Data</h2>
+      <label for='numOunces'>Number of Ounces</label>
+      <input type='number' name='numOunces' id='numOunces' value='0' step='1' min='0' max='100' aria-required="true" required>
+      <button type='button' name='button' class='new-data-submit-button' id='hydrationSubmitButton'>Submit</button>
+    </form>
+  </section>
+  <section class='infoContainer-cardContainer-card-horizontal' id='activity-form-card'>
+    <form class='activity-form form' action='index.html' method='post'>
+      <h2 id='activityFormHeader'>Submit Todays Activity Data</h2>
+      <label for='numSteps'>Number of Steps</label>
+      <input type='number' name='numSteps' id='numSteps' value='0' step='1' min='0' max='15000' aria-required="true" required>
+      <label for='minutesActive'>Minutes Active</label>
+      <input type='number' name='minutesActive' id='minutesActive' value='0' step='1' min='0' max='300' aria-required="true" required>
+      <label for='flightsOfStairs'>Flights of Stairs</label>
+      <input type='number' name='flightsOfStairs' id='flightsOfStairs' value='0' step='1' min='0' max='50' aria-required="true" required>
+      <button type='button' name='button' class='new-data-submit-button' id='activitySubmitButton'>Submit</button>
+    </form>
+  </section>
+  <section class="infoContainer-cardContainer-card-horizontal" id='sleep-form-card'>
+    <form class='sleep-form form' action='index.html' method='post'>
+      <h2 id='sleepFormHeader'>Submit Last Nights Sleep Data</h2>
+      <label for='hoursSlept'>Hours Slept</label>
+      <input type='number' name='hoursSlept' id='hoursSlept' value='0' step='0.1' min='0' max='24' aria-required="true" required>
+      <label for='sleepQuality'>Sleep Quality (on a scale of 0 to 5)</label>
+      <input type='number' name='sleepQuality' id='sleepQuality' value='0' step='0.1' min='0' max='10' aria-required="true" required>
+      <button type='button' name='button' class='new-data-submit-button' id='sleepSubmitButton'>Submit</button>
+    </form>
+  </section>
   <section class="main">
     <section class="main-sidebar-body">
       <section class="body-sidebar-sidebarContainer">
         <h2 class="sidebar-header-name" id="sidebarName">Name Name</h2>
         <div class="sidebar-header-line"></div>
-        <img src="./images/The Rock.jpg" class="sidebar-header-userImage"
-          alt="Smiling face of Dwayne 'the rock' Johnson"></img>
+        <img src="./images/The Rock.jpg" class="sidebar-header-userImage" alt="Smiling face of Dwayne 'the rock' Johnson"></img>
         <div class="sidebar-header-line"></div>
         <p class="sidebar-header-userInfo" id="userAddress"></p>
         <div class="sidebar-header-line"></div>
@@ -197,8 +196,7 @@
       <section class="body-sidebar-sidebarContainer">
         <h2 class="sidebar-header-name" id="sidebarName">FRIENDLY STEP CHALLENGE!</h2>
         <div class="sidebar-header-line"></div>
-        <img src="./images/person walking on path.jpg" class="sidebar-header-userImage"
-          alt="Lower body of person walking on a path"></img>
+        <img src="./images/person walking on path.jpg" class="sidebar-header-userImage" alt="Lower body of person walking on a path"></img>
         <div class="sidebar-header-line"></div>
         <p class="sidebar-header-userInfo" id="bigWinner"></p>
         <div class="sidebar-header-line"></div>
@@ -227,6 +225,6 @@
     </section>
   </section>
   <script src="bundle.js"></script>
-  </body>
-  
-  </html>
+</body>
+
+</html>
