@@ -113,11 +113,11 @@ function displayFriendGameInfo(id, activityInfo, userStorage, dateString, user) 
 }
 
 function postHydrationInputs() {
+  if (hydrationInput.value > 0 && hydrationInput.value < 200) {
   postHydrationData(currentUserId, currentDate, hydrationInput.value)
     .then((response) => {
-      if (!response.ok || hydrationInput.value === null || hydrationInput.value < 0) {
+      if (!response.ok) {
         throw Error(response.statusText);
-        hydrationHeader.innerHTML = "Please enter a number 0 or higher"
       } else {
         // renderSuccessfulPost("hydration");
         console.log("success")
@@ -129,6 +129,11 @@ function postHydrationInputs() {
       // showPostMessage('fail', error, 'hydration data')
       console.log(error)
     })
+  } else if (hydrationInput.value > 200) {
+    hydrationHeader.innerHTML = "Calm down Aquaman"
+  } else {
+    hydrationHeader.innerHTML = "Please enter a number 0 or higher"
+  }
 }
 
 function postActivityInputs() {
