@@ -115,8 +115,9 @@ function displayFriendGameInfo(id, activityInfo, userStorage, dateString, user) 
 function postHydrationInputs() {
   postHydrationData(currentUserId, currentDate, hydrationInput.value)
     .then((response) => {
-      if (!response.ok) {
+      if (!response.ok || hydrationInput.value === null || hydrationInput.value < 0) {
         throw Error(response.statusText);
+        hydrationHeader.innerHTML = "Please enter a number 0 or higher"
       } else {
         // renderSuccessfulPost("hydration");
         console.log("success")
