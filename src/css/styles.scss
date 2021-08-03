@@ -140,6 +140,7 @@ h1 {
 
 .card-today-activity {
   @include card-today();
+background-color: $yellow;
   width: 40%;
 }
 
